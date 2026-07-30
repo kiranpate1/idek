@@ -308,7 +308,7 @@ export default function Home() {
             ref={timelineDragRef}
           >
             <div
-              className="absolute h-full aspect-square opacity-0 bg-white/10 rounded-2xl squircle transition-opacity duration-200"
+              className="absolute h-full aspect-square opacity-0 bg-white/10 rounded-xl transition-opacity duration-200"
               ref={timelineDragVelocity}
             />
             <div className="w-6 h-6 aspect-square scale-50 flex items-center justify-center bg-white/10 border border-white/20 rounded-lg squircle">
