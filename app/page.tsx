@@ -159,7 +159,7 @@ export default function Home() {
   const timelineRef = useRef<HTMLDivElement>(null);
   const timelineDragRef = useRef<HTMLDivElement>(null);
   const timelineDragVelocity = useRef<HTMLDivElement>(null);
-  const edgesRef = useRef<SVGSVGElement>(null);
+  const edgesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (
@@ -210,7 +210,8 @@ export default function Home() {
         dragElement.classList.replace("scale-250", "scale-200");
         velocityElement.classList.replace("opacity-100", "opacity-0");
         velocityElement.style.scale = "0.5";
-        edgesElement.style.filter = "blur(0px)";
+        edgesElement.style.opacity = "0";
+        edgesElement.style.transform = "scale(1.1,1.05)";
         lastTouchX = null;
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
@@ -222,7 +223,8 @@ export default function Home() {
         dragElement.classList.replace("scale-200", "scale-250");
         velocityElement.classList.replace("opacity-0", "opacity-100");
         velocityElement.style.scale = "1";
-        edgesElement.style.filter = "blur(32px)";
+        edgesElement.style.opacity = "1";
+        edgesElement.style.transform = "scale(1,1)";
         document.addEventListener("mousemove", handleMouseMove);
         document.addEventListener("mouseup", handleMouseUp);
         document.addEventListener("touchmove", handleTouchMove);
@@ -386,7 +388,25 @@ export default function Home() {
         </h1>
 
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
-          <svg
+          <div className="opacity-0 scale-100 duration-200" ref={edgesRef}>
+            <Image
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-[645px] aspect-653/1112"
+              src="/blurred-edge-1.png"
+              alt="Blurred Edges Light"
+              width={653}
+              height={1112}
+              style={{ opacity: `${1 - skyPhaseFraction}` }}
+            />
+            <Image
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 min-w-[645px] aspect-653/1112"
+              src="/blurred-edge-2.png"
+              alt="Blurred Edges Dark"
+              width={653}
+              height={1112}
+              style={{ opacity: `${skyPhaseFraction}` }}
+            />
+          </div>
+          {/* <svg
             className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 duration-200"
             width="573"
             height="1032"
@@ -401,9 +421,9 @@ export default function Home() {
               d="M573 1032H0V0H573V1032ZM188.543 90C154.05 90 136.804 90.0002 123.629 96.7129C112.04 102.618 102.618 112.04 96.7129 123.629C90.0002 136.804 90 154.05 90 188.543V843.457C90 877.95 90.0002 895.196 96.7129 908.371C102.618 919.96 112.04 929.382 123.629 935.287C136.804 942 154.05 942 188.543 942H384.457C418.95 942 436.196 942 449.371 935.287C460.96 929.382 470.382 919.96 476.287 908.371C483 895.196 483 877.95 483 843.457V188.543C483 154.05 483 136.804 476.287 123.629C470.382 112.04 460.96 102.618 449.371 96.7129C436.196 90.0002 418.95 90 384.457 90H188.543Z"
               fill={`rgba(${220 - easeOutBack(skyPhaseFraction) * 218}, ${236 - easeOut(skyPhaseFraction) * 230}, calc(255 - var(--sky-phase, 0) * 236), 1)`}
             />
-          </svg>
+          </svg> */}
           <svg
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 duration-200"
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 duration-400 ease-in-out"
             width="573"
             height="1032"
             viewBox="0 0 573 1032"
