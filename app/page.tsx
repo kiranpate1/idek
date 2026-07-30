@@ -180,7 +180,7 @@ export default function Home() {
         dragElement.style.left = `${newLeft}px`;
 
         //velo
-        const velocity = event.touches[0].clientX - event.touches[0].clientX;
+        const velocity = event.touches[0].clientX - newLeft;
         velocityElement.style.transform = `scaleX(${1 + velocity * 5})`;
         setFlightProgress(newLeft / (rect.width - dragElement.offsetWidth));
       };
