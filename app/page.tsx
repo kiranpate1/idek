@@ -153,6 +153,7 @@ export default function Home() {
       const timeline = timelineRef.current;
       const dragElement = timelineDragRef.current;
       const velocityElement = timelineDragVelocity.current;
+      let lastTouchX: number | null = null;
 
       const handleMouseMove = (event: MouseEvent) => {
         const rect = timeline.getBoundingClientRect();
@@ -171,8 +172,8 @@ export default function Home() {
 
       const handleTouchMove = (event: TouchEvent) => {
         const rect = timeline.getBoundingClientRect();
-        let newLeft =
-          event.touches[0].clientX - rect.left - dragElement.offsetWidth / 2;
+        const touchX = event.touches[0].clientX;
+        let newLeft = touchX - rect.left - dragElement.offsetWidth / 2;
         newLeft = Math.max(
           0,
           Math.min(newLeft, rect.width - dragElement.offsetWidth),
@@ -180,14 +181,16 @@ export default function Home() {
         dragElement.style.left = `${newLeft}px`;
 
         //velo
-        const velocity = event.touches[0].clientX - newLeft;
-        velocityElement.style.transform = `scaleX(${1 + velocity * 5})`;
+        const velocity = lastTouchX === null ? 0 : touchX - lastTouchX;
+        velocityElement.style.transform = `scaleX(${1 + (velocity / rect.width) * 5})`;
+        lastTouchX = touchX;
         setFlightProgress(newLeft / (rect.width - dragElement.offsetWidth));
       };
 
       const handleMouseUp = () => {
         dragElement.classList.replace("scale-250", "scale-200");
         velocityElement.classList.replace("opacity-100", "opacity-0");
+        lastTouchX = null;
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
         document.removeEventListener("touchmove", handleTouchMove);
@@ -203,8 +206,13 @@ export default function Home() {
         document.addEventListener("touchend", handleMouseUp);
       };
 
+      const handleTouchStart = () => {
+        lastTouchX = null;
+        handleMouseDown();
+      };
+
       dragElement.addEventListener("mousedown", handleMouseDown);
-      dragElement.addEventListener("touchstart", handleMouseDown);
+      dragElement.addEventListener("touchstart", handleTouchStart);
 
       return () => {
         document.removeEventListener("mousemove", handleMouseMove);
@@ -212,7 +220,7 @@ export default function Home() {
         document.removeEventListener("touchmove", handleTouchMove);
         document.removeEventListener("touchend", handleMouseUp);
         dragElement.removeEventListener("mousedown", handleMouseDown);
-        dragElement.removeEventListener("touchstart", handleMouseDown);
+        dragElement.removeEventListener("touchstart", handleTouchStart);
       };
     }
   }, []);
