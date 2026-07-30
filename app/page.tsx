@@ -159,22 +159,42 @@ export default function Home() {
         setFlightProgress(newLeft / (rect.width - dragElement.offsetWidth));
       };
 
+      const handleTouchMove = (event: TouchEvent) => {
+        const rect = timeline.getBoundingClientRect();
+        let newLeft =
+          event.touches[0].clientX - rect.left - dragElement.offsetWidth / 2;
+        newLeft = Math.max(
+          0,
+          Math.min(newLeft, rect.width - dragElement.offsetWidth),
+        );
+        dragElement.style.left = `${newLeft}px`;
+        setFlightProgress(newLeft / (rect.width - dragElement.offsetWidth));
+      };
+
       const handleMouseUp = () => {
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
+        document.removeEventListener("touchmove", handleTouchMove);
+        document.removeEventListener("touchend", handleMouseUp);
       };
 
       const handleMouseDown = () => {
         document.addEventListener("mousemove", handleMouseMove);
         document.addEventListener("mouseup", handleMouseUp);
+        document.addEventListener("touchmove", handleTouchMove);
+        document.addEventListener("touchend", handleMouseUp);
       };
 
       dragElement.addEventListener("mousedown", handleMouseDown);
+      dragElement.addEventListener("touchstart", handleMouseDown);
 
       return () => {
         document.removeEventListener("mousemove", handleMouseMove);
         document.removeEventListener("mouseup", handleMouseUp);
+        document.removeEventListener("touchmove", handleTouchMove);
+        document.removeEventListener("touchend", handleMouseUp);
         dragElement.removeEventListener("mousedown", handleMouseDown);
+        dragElement.removeEventListener("touchstart", handleMouseDown);
       };
     }
   }, []);
