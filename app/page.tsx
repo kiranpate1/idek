@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
+import { interpolate as interpolatePath } from "flubber";
 import gradients from "./components/gradients";
 
 const times = {
@@ -303,6 +304,51 @@ function getPathDirectionAtProgress(
   };
 }
 
+function useMorphingPath(
+  isDragging: boolean,
+  defaultPath: string,
+  draggingPath: string,
+  durationMs = 300,
+): string {
+  const [path, setPath] = useState(defaultPath);
+  const pathRef = useRef(defaultPath);
+
+  useEffect(() => {
+    const fromPath = pathRef.current;
+    const toPath = isDragging ? draggingPath : defaultPath;
+
+    if (fromPath === toPath) return;
+
+    const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+    const mixer = interpolatePath(fromPath, toPath, { maxSegmentLength: 1 });
+    let frameId = 0;
+    let startTime: number | null = null;
+
+    const animateFrame = (timestamp: number) => {
+      if (startTime === null) startTime = timestamp;
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(1, elapsed / durationMs);
+      const easedProgress = easeOutCubic(progress);
+      const nextPath = mixer(easedProgress);
+
+      pathRef.current = nextPath;
+      setPath(nextPath);
+
+      if (progress < 1) {
+        frameId = requestAnimationFrame(animateFrame);
+      }
+    };
+
+    frameId = requestAnimationFrame(animateFrame);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+    };
+  }, [isDragging, defaultPath, draggingPath, durationMs]);
+
+  return path;
+}
+
 export default function Home() {
   const [flightProgress, setFlightProgress] = useState(INITIAL_FLIGHT_PROGRESS);
   const [isDragging, setIsDragging] = useState(false);
@@ -364,6 +410,26 @@ export default function Home() {
     [localTime],
   );
   const skyPhaseFraction = 1 - skyPhase / (gradients.length - 1);
+
+  const hourHandPathDefault =
+    "M172.5 201.5V161.242C172.5 160.447 172.184 159.684 171.621 159.121L165.932 153.432C165.338 152.838 165.02 152.022 165.056 151.182L168.467 71.774C168.488 71.2661 168.639 70.7721 168.904 70.3384L173.183 63.336C173.564 62.7126 174.463 62.6948 174.869 63.3027L179.529 70.2938C179.837 70.7553 180.011 71.2931 180.031 71.8475L182.952 151.193C182.982 152.026 182.665 152.835 182.075 153.424L176.379 159.121C175.816 159.684 175.5 160.447 175.5 161.242V201.5C175.5 202.328 174.828 203 174 203C173.171 203 172.5 202.328 172.5 201.5Z";
+  const hourHandPathDragging =
+    "M173.5 201.5V161.243C173.5 160.447 173.5 159.501 173.5 158.501L173.5 153.001C173.5 152.001 173.5 151.501 173.5 151.001L173.5 73.5008C173.501 73.0008 173.5 72.5008 173.5 72.0008L173.5 63.5003C173.881 62.8769 174.095 62.8934 174.5 63.5013L174.5 72.0008C174.5 72.5008 174.5 73.0008 174.5 73.5008L174.5 151.001C174.5 151.501 174.5 152.001 174.5 153.001V158.501C174.5 159.501 174.5 160.447 174.5 161.243V201.5C174.5 202.329 174.5 203.001 174 203C173.5 203.001 173.5 202.329 173.5 201.5Z";
+  const minuteHandPathDefault =
+    "M172.5 201.5V161.099C172.5 160.389 172.248 159.702 171.79 159.161L167.729 154.361C167.259 153.806 167.007 153.099 167.019 152.371L169.488 9.6804C169.496 9.23226 169.604 8.79155 169.804 8.39066L173.152 1.69537C173.512 0.976105 174.53 0.953977 174.921 1.65694L178.633 8.33942C178.874 8.77281 179.004 9.25911 179.01 9.75484L180.984 152.377C180.994 153.101 180.742 153.804 180.275 154.357L176.21 159.161C175.751 159.702 175.5 160.389 175.5 161.099V201.5C175.5 202.328 174.828 203 174 203C173.172 203 172.5 202.328 172.5 201.5Z";
+  const minuteHandPathDragging =
+    "M173.499 201.499V161.098C173.499 160.389 173.499 159.5 173.499 158.5L173.5 153C173.5 152 173.5 151.5 173.499 151V11.4997C173.507 11.0516 173.499 10.4997 173.499 9.99974L173.5 2.00036C173.859 1.28109 174.109 1.29698 174.5 1.99994L174.5 9.99974C174.5 10.4997 174.493 11.004 174.5 11.4997L174.5 151C174.5 151.5 174.5 152 174.499 153V158.5C174.499 159.5 174.499 160.389 174.499 161.098V201.499C174.499 202.328 174.499 202.999 173.999 202.999C173.499 202.999 173.499 202.328 173.499 201.499Z";
+
+  const hourHandPath = useMorphingPath(
+    isDragging,
+    hourHandPathDefault,
+    hourHandPathDragging,
+  );
+  const minuteHandPath = useMorphingPath(
+    isDragging,
+    minuteHandPathDefault,
+    minuteHandPathDragging,
+  );
 
   useEffect(() => {
     if (
@@ -650,7 +716,48 @@ export default function Home() {
             </svg>
             <div className="absolute flex flex-col items-center gap-4 text-(--clock-color) transition-[color] duration-200">
               <div className="absolute z-1 inset-0 mask-[linear-gradient(to_bottom,transparent_5%,white_10%,white_90%,transparent_95%)]">
-                <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 flex items-stretch justify-center gap-4">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-0 h-0 flex items-center justify-center">
+                  <svg
+                    className="absolute"
+                    width="300"
+                    height="300"
+                    viewBox="0 0 348 348"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      className="rotate-[calc(var(--hours-percent,0deg)*360deg)] transform-fill [transform-origin:50%_79%]"
+                      d={hourHandPath}
+                      fill="currentColor"
+                    />
+                    <path
+                      className="rotate-[calc(var(--minutes-percent,0deg)*360deg)] transform-fill [transform-origin:50%_85.5%] transition-opacity duration-200"
+                      d={minuteHandPath}
+                      fill="currentColor"
+                    />
+                    <line
+                      className="seconds-hand transform-fill transform [transform-origin:50%_89%] transition-opacity duration-200"
+                      x1="174"
+                      y1="0"
+                      x2="174"
+                      y2="196"
+                      style={{ opacity: isDragging ? 0 : 1 }}
+                      stroke="currentColor"
+                    />
+                    <circle cx="174" cy="174" r="4" fill="#D9D9D9" />
+                  </svg>
+
+                  <div
+                    className="absolute min-w-2.5 min-h-2.5 rounded-full"
+                    style={{
+                      filter: `hue-rotate(calc(0deg - var(--sky-phase, 0) * 30deg)) saturate(calc(1 + var(--sky-phase, 0) * 1.5)) brightness(${1 - easeInBack(skyPhaseFraction) * 0.5})`,
+                      backgroundColor: interpolatedColors[3],
+                    }}
+                  />
+                  <div className="absolute min-w-2.5 min-h-2.5 rounded-full border-2" />
+                  <div className="absolute min-w-3.5 min-h-3.5 rounded-full border opacity-50" />
+                </div>
+                <div className="absolute bottom-1/4 left-[53%] -translate-x-1/2 flex items-stretch justify-center gap-4">
                   <div className="flex items-stretch gap-0.5">
                     <div className="relative">
                       <h3 className="relative opacity-15">00:00</h3>

@@ -1,0 +1,1268 @@
+0 verbose cli /usr/local/bin/node /usr/local/bin/npm
+1 info using npm@10.5.2
+2 info using node@v20.13.1
+3 timing npm:load:whichnode Completed in 0ms
+4 timing config:load:defaults Completed in 0ms
+5 timing config:load:file:/usr/local/lib/node_modules/npm/npmrc Completed in 1ms
+6 timing config:load:builtin Completed in 1ms
+7 timing config:load:cli Completed in 1ms
+8 timing config:load:env Completed in 0ms
+9 timing config:load:file:/Users/kiranpatel/Desktop/idek/.npmrc Completed in 0ms
+10 timing config:load:project Completed in 1ms
+11 timing config:load:file:/Users/kiranpatel/.npmrc Completed in 0ms
+12 timing config:load:user Completed in 0ms
+13 timing config:load:file:/usr/local/etc/npmrc Completed in 0ms
+14 timing config:load:global Completed in 0ms
+15 timing config:load:setEnvs Completed in 1ms
+16 timing config:load Completed in 4ms
+17 timing npm:load:configload Completed in 5ms
+18 timing config:load:flatten Completed in 1ms
+19 timing npm:load:mkdirpcache Completed in 0ms
+20 timing npm:load:mkdirplogs Completed in 1ms
+21 verbose title npm install flubber
+22 verbose argv "install" "flubber" "--cache" ".npm-cache"
+23 timing npm:load:setTitle Completed in 9ms
+24 timing npm:load:display Completed in 1ms
+25 verbose logfile logs-max:10 dir:/Users/kiranpatel/Desktop/idek/.npm-cache/_logs/2026-08-08T03_48_35_252Z-
+26 verbose logfile /Users/kiranpatel/Desktop/idek/.npm-cache/_logs/2026-08-08T03_48_35_252Z-debug-0.log
+27 timing npm:load:logFile Completed in 1ms
+28 timing npm:load:timers Completed in 0ms
+29 timing npm:load:configScope Completed in 0ms
+30 timing npm:load Completed in 25ms
+31 timing arborist:ctor Completed in 1ms
+32 silly logfile done cleaning log files
+33 timing idealTree:init Completed in 72ms
+34 timing idealTree:userRequests Completed in 1ms
+35 silly idealTree buildDeps
+36 silly fetch manifest flubber@*
+37 timing arborist:ctor Completed in 0ms
+38 http fetch GET 200 https://registry.npmjs.org/flubber 70ms (cache miss)
+39 silly placeDep ROOT flubber@0.4.2 OK for: idek@0.1.0 want: *
+40 silly fetch manifest d3-array@^1.2.0
+41 silly fetch manifest d3-polygon@^1.0.3
+42 silly fetch manifest earcut@^2.1.1
+43 silly fetch manifest svg-path-properties@^0.2.1
+44 silly fetch manifest svgpath@^2.2.1
+45 silly fetch manifest topojson-client@^3.0.0
+46 http fetch GET 200 https://registry.npmjs.org/npm 272ms
+47 http fetch GET 200 https://registry.npmjs.org/d3-array 128ms (cache miss)
+48 http fetch GET 200 https://registry.npmjs.org/d3-polygon 138ms (cache miss)
+49 http fetch GET 200 https://registry.npmjs.org/svgpath 285ms (cache miss)
+50 http fetch GET 200 https://registry.npmjs.org/topojson-client 285ms (cache miss)
+51 http fetch GET 200 https://registry.npmjs.org/earcut 288ms (cache miss)
+52 http fetch GET 200 https://registry.npmjs.org/svg-path-properties 289ms (cache miss)
+53 timing idealTree:#root Completed in 365ms
+54 timing idealTree:node_modules/@tailwindcss/oxide-wasm32-wasi Completed in 0ms
+55 silly placeDep ROOT d3-array@1.2.4 OK for: flubber@0.4.2 want: ^1.2.0
+56 silly placeDep ROOT d3-polygon@1.0.6 OK for: flubber@0.4.2 want: ^1.0.3
+57 silly placeDep ROOT earcut@2.2.4 OK for: flubber@0.4.2 want: ^2.1.1
+58 silly placeDep ROOT svg-path-properties@0.2.2 OK for: flubber@0.4.2 want: ^0.2.1
+59 silly placeDep ROOT svgpath@2.6.0 OK for: flubber@0.4.2 want: ^2.2.1
+60 silly placeDep ROOT topojson-client@3.1.0 OK for: flubber@0.4.2 want: ^3.0.0
+61 silly fetch manifest commander@2
+62 http fetch GET 200 https://registry.npmjs.org/commander 38ms (cache miss)
+63 timing idealTree:node_modules/flubber Completed in 45ms
+64 timing idealTree:node_modules/d3-array Completed in 0ms
+65 timing idealTree:node_modules/d3-polygon Completed in 0ms
+66 timing idealTree:node_modules/earcut Completed in 0ms
+67 timing idealTree:node_modules/svg-path-properties Completed in 0ms
+68 timing idealTree:node_modules/svgpath Completed in 0ms
+69 silly placeDep ROOT commander@2.20.3 OK for: topojson-client@3.1.0 want: 2
+70 timing idealTree:node_modules/topojson-client Completed in 1ms
+71 timing idealTree:node_modules/commander Completed in 0ms
+72 timing idealTree:buildDeps Completed in 412ms
+73 timing idealTree:fixDepFlags Completed in 2ms
+74 warn EBADENGINE Unsupported engine {
+74 warn EBADENGINE   package: 'eslint-visitor-keys@5.0.1',
+74 warn EBADENGINE   required: { node: '^20.19.0 || ^22.13.0 || >=24' },
+74 warn EBADENGINE   current: { node: 'v20.13.1', npm: '10.5.2' }
+74 warn EBADENGINE }
+75 timing idealTree Completed in 491ms
+76 timing reify:loadTrees Completed in 492ms
+77 timing reify:diffTrees Completed in 10ms
+78 silly reify moves {}
+79 timing reify:retireShallow Completed in 0ms
+80 timing reify:createSparse Completed in 4ms
+81 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-wasm32-wasi
+82 silly reify mark deleted [
+82 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-wasm32-wasi'
+82 silly reify ]
+83 timing reifyNode:node_modules/@tailwindcss/oxide-wasm32-wasi Completed in 1ms
+84 timing arborist:ctor Completed in 0ms
+85 timing reify:diffTrees Completed in 1ms
+86 timing reify:loadBundles Completed in 4ms
+87 silly audit bulk request {
+87 silly audit   '@alloc/quick-lru': [ '5.2.0' ],
+87 silly audit   '@emnapi/core': [ '1.10.0' ],
+87 silly audit   '@emnapi/runtime': [ '1.11.3', '1.10.0' ],
+87 silly audit   '@emnapi/wasi-threads': [ '1.2.1' ],
+87 silly audit   '@eslint-community/eslint-utils': [ '4.10.1' ],
+87 silly audit   'eslint-visitor-keys': [ '3.4.3', '5.0.1', '4.2.1' ],
+87 silly audit   '@eslint-community/regexpp': [ '4.12.2' ],
+87 silly audit   '@eslint/config-array': [ '0.21.2' ],
+87 silly audit   '@eslint/config-helpers': [ '0.4.2' ],
+87 silly audit   '@eslint/core': [ '0.17.0' ],
+87 silly audit   '@eslint/eslintrc': [ '3.3.6' ],
+87 silly audit   '@eslint/js': [ '9.39.5' ],
+87 silly audit   '@eslint/object-schema': [ '2.1.7' ],
+87 silly audit   '@eslint/plugin-kit': [ '0.4.1' ],
+87 silly audit   '@humanfs/core': [ '0.19.2' ],
+87 silly audit   '@humanfs/node': [ '0.16.8' ],
+87 silly audit   '@humanfs/types': [ '0.15.0' ],
+87 silly audit   '@humanwhocodes/module-importer': [ '1.0.1' ],
+87 silly audit   '@humanwhocodes/retry': [ '0.4.3' ],
+87 silly audit   '@img/colour': [ '1.1.0' ],
+87 silly audit   '@img/sharp-darwin-arm64': [ '0.34.5' ],
+87 silly audit   '@img/sharp-darwin-x64': [ '0.34.5' ],
+87 silly audit   '@img/sharp-libvips-darwin-arm64': [ '1.2.4' ],
+87 silly audit   '@img/sharp-libvips-darwin-x64': [ '1.2.4' ],
+87 silly audit   '@img/sharp-libvips-linux-arm': [ '1.2.4' ],
+87 silly audit   '@img/sharp-libvips-linux-arm64': [ '1.2.4' ],
+87 silly audit   '@img/sharp-libvips-linux-ppc64': [ '1.2.4' ],
+87 silly audit   '@img/sharp-libvips-linux-riscv64': [ '1.2.4' ],
+87 silly audit   '@img/sharp-libvips-linux-s390x': [ '1.2.4' ],
+87 silly audit   '@img/sharp-libvips-linux-x64': [ '1.2.4' ],
+87 silly audit   '@img/sharp-libvips-linuxmusl-arm64': [ '1.2.4' ],
+87 silly audit   '@img/sharp-libvips-linuxmusl-x64': [ '1.2.4' ],
+87 silly audit   '@img/sharp-linux-arm': [ '0.34.5' ],
+87 silly audit   '@img/sharp-linux-arm64': [ '0.34.5' ],
+87 silly audit   '@img/sharp-linux-ppc64': [ '0.34.5' ],
+87 silly audit   '@img/sharp-linux-riscv64': [ '0.34.5' ],
+87 silly audit   '@img/sharp-linux-s390x': [ '0.34.5' ],
+87 silly audit   '@img/sharp-linux-x64': [ '0.34.5' ],
+87 silly audit   '@img/sharp-linuxmusl-arm64': [ '0.34.5' ],
+87 silly audit   '@img/sharp-linuxmusl-x64': [ '0.34.5' ],
+87 silly audit   '@img/sharp-wasm32': [ '0.34.5' ],
+87 silly audit   '@img/sharp-win32-arm64': [ '0.34.5' ],
+87 silly audit   '@img/sharp-win32-ia32': [ '0.34.5' ],
+87 silly audit   '@img/sharp-win32-x64': [ '0.34.5' ],
+87 silly audit   '@jridgewell/gen-mapping': [ '0.3.13' ],
+87 silly audit   '@jridgewell/remapping': [ '2.3.5' ],
+87 silly audit   '@jridgewell/resolve-uri': [ '3.1.2' ],
+87 silly audit   '@jridgewell/sourcemap-codec': [ '1.5.5' ],
+87 silly audit   '@jridgewell/trace-mapping': [ '0.3.31' ],
+87 silly audit   '@napi-rs/wasm-runtime': [ '1.2.1' ],
+87 silly audit   '@next/env': [ '15.5.18' ],
+87 silly audit   '@next/eslint-plugin-next': [ '15.5.18' ],
+87 silly audit   '@next/swc-darwin-arm64': [ '15.5.18' ],
+87 silly audit   '@next/swc-darwin-x64': [ '15.5.18' ],
+87 silly audit   '@next/swc-linux-arm64-gnu': [ '15.5.18' ],
+87 silly audit   '@next/swc-linux-arm64-musl': [ '15.5.18' ],
+87 silly audit   '@next/swc-linux-x64-gnu': [ '15.5.18' ],
+87 silly audit   '@next/swc-linux-x64-musl': [ '15.5.18' ],
+87 silly audit   '@next/swc-win32-arm64-msvc': [ '15.5.18' ],
+87 silly audit   '@next/swc-win32-x64-msvc': [ '15.5.18' ],
+87 silly audit   '@nodelib/fs.scandir': [ '2.1.5' ],
+87 silly audit   '@nodelib/fs.stat': [ '2.0.5' ],
+87 silly audit   '@nodelib/fs.walk': [ '1.2.8' ],
+87 silly audit   '@nolyfill/is-core-module': [ '1.0.39' ],
+87 silly audit   '@rtsao/scc': [ '1.1.0' ],
+87 silly audit   '@rushstack/eslint-patch': [ '1.16.1' ],
+87 silly audit   '@swc/helpers': [ '0.5.15' ],
+87 silly audit   '@tailwindcss/node': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide-android-arm64': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide-darwin-arm64': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide-darwin-x64': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide-freebsd-x64': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide-linux-arm-gnueabihf': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide-linux-arm64-gnu': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide-linux-arm64-musl': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide-linux-x64-gnu': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide-linux-x64-musl': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide-win32-arm64-msvc': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/oxide-win32-x64-msvc': [ '4.3.3' ],
+87 silly audit   '@tailwindcss/postcss': [ '4.3.3' ],
+87 silly audit   '@tybys/wasm-util': [ '0.10.3' ],
+87 silly audit   '@types/estree': [ '1.0.9' ],
+87 silly audit   '@types/json-schema': [ '7.0.15' ],
+87 silly audit   '@types/json5': [ '0.0.29' ],
+87 silly audit   '@types/node': [ '20.19.43' ],
+87 silly audit   '@types/react': [ '19.2.17' ],
+87 silly audit   '@types/react-dom': [ '19.2.3' ],
+87 silly audit   '@typescript-eslint/eslint-plugin': [ '8.65.0' ],
+87 silly audit   ignore: [ '7.0.6', '5.3.2' ],
+87 silly audit   '@typescript-eslint/parser': [ '8.65.0' ],
+87 silly audit   '@typescript-eslint/project-service': [ '8.65.0' ],
+87 silly audit   '@typescript-eslint/scope-manager': [ '8.65.0' ],
+87 silly audit   '@typescript-eslint/tsconfig-utils': [ '8.65.0' ],
+87 silly audit   '@typescript-eslint/type-utils': [ '8.65.0' ],
+87 silly audit   '@typescript-eslint/types': [ '8.65.0' ],
+87 silly audit   '@typescript-eslint/typescript-estree': [ '8.65.0' ],
+87 silly audit   'balanced-match': [ '4.0.4', '1.0.2' ],
+87 silly audit   'brace-expansion': [ '5.0.8', '1.1.17' ],
+87 silly audit   minimatch: [ '10.2.6', '3.1.5' ],
+87 silly audit   '@typescript-eslint/utils': [ '8.65.0' ],
+87 silly audit   '@typescript-eslint/visitor-keys': [ '8.65.0' ],
+87 silly audit   '@unrs/resolver-binding-android-arm-eabi': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-android-arm64': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-darwin-arm64': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-darwin-x64': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-freebsd-x64': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-arm-gnueabihf': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-arm-musleabihf': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-arm64-gnu': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-arm64-musl': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-loong64-gnu': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-loong64-musl': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-ppc64-gnu': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-riscv64-gnu': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-riscv64-musl': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-s390x-gnu': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-x64-gnu': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-linux-x64-musl': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-openharmony-arm64': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-wasm32-wasi': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-win32-arm64-msvc': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-win32-ia32-msvc': [ '1.12.2' ],
+87 silly audit   '@unrs/resolver-binding-win32-x64-msvc': [ '1.12.2' ],
+87 silly audit   acorn: [ '8.18.0' ],
+87 silly audit   'acorn-jsx': [ '5.3.2' ],
+87 silly audit   ajv: [ '6.15.0' ],
+87 silly audit   'ansi-styles': [ '4.3.0' ],
+87 silly audit   argparse: [ '2.0.1' ],
+87 silly audit   'aria-query': [ '5.3.2' ],
+87 silly audit   'array-buffer-byte-length': [ '1.0.2' ],
+87 silly audit   'array-includes': [ '3.1.9' ],
+87 silly audit   'array.prototype.findlast': [ '1.2.5' ],
+87 silly audit   'array.prototype.findlastindex': [ '1.2.6' ],
+87 silly audit   'array.prototype.flat': [ '1.3.3' ],
+87 silly audit   'array.prototype.flatmap': [ '1.3.3' ],
+87 silly audit   'array.prototype.tosorted': [ '1.1.4' ],
+87 silly audit   'arraybuffer.prototype.slice': [ '1.0.4' ],
+87 silly audit   'ast-types-flow': [ '0.0.8' ],
+87 silly audit   'async-function': [ '1.0.0' ],
+87 silly audit   'available-typed-arrays': [ '1.0.7' ],
+87 silly audit   'axe-core': [ '4.12.1' ],
+87 silly audit   'axobject-query': [ '4.1.0' ],
+87 silly audit   braces: [ '3.0.3' ],
+87 silly audit   'call-bind': [ '1.0.9' ],
+87 silly audit   'call-bind-apply-helpers': [ '1.0.2' ],
+87 silly audit   'call-bound': [ '1.0.4' ],
+87 silly audit   callsites: [ '3.1.0' ],
+87 silly audit   'caniuse-lite': [ '1.0.30001806' ],
+87 silly audit   chalk: [ '4.1.2' ],
+87 silly audit   'client-only': [ '0.0.1' ],
+87 silly audit   'color-convert': [ '2.0.1' ],
+87 silly audit   'color-name': [ '1.1.4' ],
+87 silly audit   'concat-map': [ '0.0.1' ],
+87 silly audit   'cross-spawn': [ '7.0.6' ],
+87 silly audit   csstype: [ '3.2.3' ],
+87 silly audit   'damerau-levenshtein': [ '1.0.8' ],
+87 silly audit   'data-view-buffer': [ '1.0.2' ],
+87 silly audit   'data-view-byte-length': [ '1.0.2' ],
+87 silly audit   'data-view-byte-offset': [ '1.0.1' ],
+87 silly audit   debug: [ '4.4.3', '3.2.7' ],
+87 silly audit   'deep-is': [ '0.1.4' ],
+87 silly audit   'define-data-property': [ '1.1.4' ],
+87 silly audit   'define-properties': [ '1.2.1' ],
+87 silly audit   'detect-libc': [ '2.1.2' ],
+87 silly audit   doctrine: [ '2.1.0' ],
+87 silly audit   'dunder-proto': [ '1.0.1' ],
+87 silly audit   'emoji-regex': [ '9.2.2' ],
+87 silly audit   'enhanced-resolve': [ '5.24.4' ],
+87 silly audit   'es-abstract': [ '1.24.2' ],
+87 silly audit   'es-abstract-get': [ '1.0.0' ],
+87 silly audit   'es-define-property': [ '1.0.1' ],
+87 silly audit   'es-errors': [ '1.3.0' ],
+87 silly audit   'es-iterator-helpers': [ '1.4.0' ],
+87 silly audit   'es-object-atoms': [ '1.1.2' ],
+87 silly audit   'es-set-tostringtag': [ '2.1.0' ],
+87 silly audit   'es-shim-unscopables': [ '1.1.0' ],
+87 silly audit   'es-to-primitive': [ '1.3.4' ],
+87 silly audit   'escape-string-regexp': [ '4.0.0' ],
+87 silly audit   eslint: [ '9.39.5' ],
+87 silly audit   'eslint-config-next': [ '15.5.18' ],
+87 silly audit   'eslint-import-resolver-node': [ '0.3.10' ],
+87 silly audit   'eslint-import-resolver-typescript': [ '3.10.1' ],
+87 silly audit   'eslint-module-utils': [ '2.14.0' ],
+87 silly audit   'eslint-plugin-import': [ '2.32.0' ],
+87 silly audit   semver: [ '6.3.1', '7.8.5' ],
+87 silly audit   'eslint-plugin-jsx-a11y': [ '6.10.2' ],
+87 silly audit   'eslint-plugin-react': [ '7.37.5' ],
+87 silly audit   'eslint-plugin-react-hooks': [ '5.2.0' ],
+87 silly audit   'eslint-scope': [ '8.4.0' ],
+87 silly audit   espree: [ '10.4.0' ],
+87 silly audit   esquery: [ '1.7.0' ],
+87 silly audit   esrecurse: [ '4.3.0' ],
+87 silly audit   estraverse: [ '5.3.0' ],
+87 silly audit   esutils: [ '2.0.3' ],
+87 silly audit   'fast-deep-equal': [ '3.1.3' ],
+87 silly audit   'fast-glob': [ '3.3.1' ],
+87 silly audit   'glob-parent': [ '5.1.2', '6.0.2' ],
+87 silly audit   'fast-json-stable-stringify': [ '2.1.0' ],
+87 silly audit   'fast-levenshtein': [ '2.0.6' ],
+87 silly audit   fastq: [ '1.20.1' ],
+87 silly audit   'file-entry-cache': [ '8.0.0' ],
+87 silly audit   'fill-range': [ '7.1.1' ],
+87 silly audit   'find-up': [ '5.0.0' ],
+87 silly audit   'flat-cache': [ '4.0.1' ],
+87 silly audit   flatted: [ '3.4.3' ],
+87 silly audit   'for-each': [ '0.3.5' ],
+87 silly audit   'function-bind': [ '1.1.2' ],
+87 silly audit   'function.prototype.name': [ '1.2.0' ],
+87 silly audit   'functions-have-names': [ '1.2.3' ],
+87 silly audit   'generator-function': [ '2.0.1' ],
+87 silly audit   'get-intrinsic': [ '1.3.0' ],
+87 silly audit   'get-proto': [ '1.0.1' ],
+87 silly audit   'get-symbol-description': [ '1.1.0' ],
+87 silly audit   'get-tsconfig': [ '4.14.0' ],
+87 silly audit   globals: [ '14.0.0' ],
+87 silly audit   globalthis: [ '1.0.4' ],
+87 silly audit   gopd: [ '1.2.0' ],
+87 silly audit   'graceful-fs': [ '4.2.11' ],
+87 silly audit   'has-bigints': [ '1.1.0' ],
+87 silly audit   'has-flag': [ '4.0.0' ],
+87 silly audit   'has-property-descriptors': [ '1.0.2' ],
+87 silly audit   'has-proto': [ '1.2.0' ],
+87 silly audit   'has-symbols': [ '1.1.0' ],
+87 silly audit   'has-tostringtag': [ '1.0.2' ],
+87 silly audit   hasown: [ '2.0.4' ],
+87 silly audit   'import-fresh': [ '3.3.1' ],
+87 silly audit   imurmurhash: [ '0.1.4' ],
+87 silly audit   'internal-slot': [ '1.1.0' ],
+87 silly audit   'is-array-buffer': [ '3.0.5' ],
+87 silly audit   'is-async-function': [ '2.1.1' ],
+87 silly audit   'is-bigint': [ '1.1.0' ],
+87 silly audit   'is-boolean-object': [ '1.2.2' ],
+87 silly audit   'is-bun-module': [ '2.0.0' ],
+87 silly audit   'is-callable': [ '1.2.7' ],
+87 silly audit   'is-core-module': [ '2.16.2' ],
+87 silly audit   'is-data-view': [ '1.0.2' ],
+87 silly audit   'is-date-object': [ '1.1.0' ],
+87 silly audit   'is-document.all': [ '1.0.0' ],
+87 silly audit   'is-extglob': [ '2.1.1' ],
+87 silly audit   'is-finalizationregistry': [ '1.1.1' ],
+87 silly audit   'is-generator-function': [ '1.1.2' ],
+87 silly audit   'is-glob': [ '4.0.3' ],
+87 silly audit   'is-map': [ '2.0.3' ],
+87 silly audit   'is-negative-zero': [ '2.0.3' ],
+87 silly audit   'is-number': [ '7.0.0' ],
+87 silly audit   'is-number-object': [ '1.1.1' ],
+87 silly audit   'is-regex': [ '1.2.1' ],
+87 silly audit   'is-set': [ '2.0.3' ],
+87 silly audit   'is-shared-array-buffer': [ '1.0.4' ],
+87 silly audit   'is-string': [ '1.1.1' ],
+87 silly audit   'is-symbol': [ '1.1.1' ],
+87 silly audit   'is-typed-array': [ '1.1.15' ],
+87 silly audit   'is-weakmap': [ '2.0.2' ],
+87 silly audit   'is-weakref': [ '1.1.1' ],
+87 silly audit   'is-weakset': [ '2.0.4' ],
+87 silly audit   isarray: [ '2.0.5' ],
+87 silly audit   isexe: [ '2.0.0' ],
+87 silly audit   'iterator.prototype': [ '1.1.5' ],
+87 silly audit   jiti: [ '2.7.0' ],
+87 silly audit   'js-tokens': [ '4.0.0' ],
+87 silly audit   'js-yaml': [ '4.3.0' ],
+87 silly audit   'json-buffer': [ '3.0.1' ],
+87 silly audit   'json-schema-traverse': [ '0.4.1' ],
+87 silly audit   'json-stable-stringify-without-jsonify': [ '1.0.1' ],
+87 silly audit   json5: [ '1.0.2' ],
+87 silly audit   'jsx-ast-utils': [ '3.3.5' ],
+87 silly audit   keyv: [ '4.5.4' ],
+87 silly audit   'language-subtag-registry': [ '0.3.23' ],
+87 silly audit   'language-tags': [ '1.0.9' ],
+87 silly audit   levn: [ '0.4.1' ],
+87 silly audit   lightningcss: [ '1.32.0' ],
+87 silly audit   'lightningcss-android-arm64': [ '1.32.0' ],
+87 silly audit   'lightningcss-darwin-arm64': [ '1.32.0' ],
+87 silly audit   'lightningcss-darwin-x64': [ '1.32.0' ],
+87 silly audit   'lightningcss-freebsd-x64': [ '1.32.0' ],
+87 silly audit   'lightningcss-linux-arm-gnueabihf': [ '1.32.0' ],
+87 silly audit   'lightningcss-linux-arm64-gnu': [ '1.32.0' ],
+87 silly audit   'lightningcss-linux-arm64-musl': [ '1.32.0' ],
+87 silly audit   'lightningcss-linux-x64-gnu': [ '1.32.0' ],
+87 silly audit   'lightningcss-linux-x64-musl': [ '1.32.0' ],
+87 silly audit   'lightningcss-win32-arm64-msvc': [ '1.32.0' ],
+87 silly audit   'lightningcss-win32-x64-msvc': [ '1.32.0' ],
+87 silly audit   'locate-path': [ '6.0.0' ],
+87 silly audit   'lodash.merge': [ '4.6.2' ],
+87 silly audit   'loose-envify': [ '1.4.0' ],
+87 silly audit   'magic-string': [ '0.30.21' ],
+87 silly audit   'math-intrinsics': [ '1.1.0' ],
+87 silly audit   merge2: [ '1.4.1' ],
+87 silly audit   micromatch: [ '4.0.8' ],
+87 silly audit   minimist: [ '1.2.8' ],
+87 silly audit   ms: [ '2.1.3' ],
+87 silly audit   nanoid: [ '3.3.16' ],
+87 silly audit   'napi-postinstall': [ '0.3.4' ],
+87 silly audit   'natural-compare': [ '1.4.0' ],
+87 silly audit   next: [ '15.5.18' ],
+87 silly audit   postcss: [ '8.4.31', '8.5.25' ],
+87 silly audit   'node-exports-info': [ '1.6.2' ],
+87 silly audit   'object-assign': [ '4.1.1' ],
+87 silly audit   'object-inspect': [ '1.13.4' ],
+87 silly audit   'object-keys': [ '1.1.1' ],
+87 silly audit   'object.assign': [ '4.1.7' ],
+87 silly audit   'object.entries': [ '1.1.9' ],
+87 silly audit   'object.fromentries': [ '2.0.8' ],
+87 silly audit   'object.groupby': [ '1.0.3' ],
+87 silly audit   'object.values': [ '1.2.1' ],
+87 silly audit   optionator: [ '0.9.4' ],
+87 silly audit   'own-keys': [ '1.0.2' ],
+87 silly audit   'p-limit': [ '3.1.0' ],
+87 silly audit   'p-locate': [ '5.0.0' ],
+87 silly audit   'parent-module': [ '1.0.1' ],
+87 silly audit   'path-exists': [ '4.0.0' ],
+87 silly audit   'path-key': [ '3.1.1' ],
+87 silly audit   'path-parse': [ '1.0.7' ],
+87 silly audit   picocolors: [ '1.1.1' ],
+87 silly audit   picomatch: [ '2.3.2', '4.0.5' ],
+87 silly audit   'possible-typed-array-names': [ '1.1.0' ],
+87 silly audit   'prelude-ls': [ '1.2.1' ],
+87 silly audit   'prop-types': [ '15.8.1' ],
+87 silly audit   punycode: [ '2.3.1' ],
+87 silly audit   'queue-microtask': [ '1.2.3' ],
+87 silly audit   react: [ '19.1.0' ],
+87 silly audit   'react-dom': [ '19.1.0' ],
+87 silly audit   'react-is': [ '16.13.1' ],
+87 silly audit   'reflect.getprototypeof': [ '1.0.10' ],
+87 silly audit   'regexp.prototype.flags': [ '1.5.4' ],
+87 silly audit   resolve: [ '2.0.0-next.7' ],
+87 silly audit   'resolve-from': [ '4.0.0' ],
+87 silly audit   'resolve-pkg-maps': [ '1.0.0' ],
+87 silly audit   reusify: [ '1.1.0' ],
+87 silly audit   'run-parallel': [ '1.2.0' ],
+87 silly audit   'safe-array-concat': [ '1.1.4' ],
+87 silly audit   'safe-push-apply': [ '1.0.0' ],
+87 silly audit   'safe-regex-test': [ '1.1.0' ],
+87 silly audit   scheduler: [ '0.26.0' ],
+87 silly audit   'set-function-length': [ '1.2.2' ],
+87 silly audit   'set-function-name': [ '2.0.2' ],
+87 silly audit   'set-proto': [ '1.0.0' ],
+87 silly audit   sharp: [ '0.34.5' ],
+87 silly audit   'shebang-command': [ '2.0.0' ],
+87 silly audit   'shebang-regex': [ '3.0.0' ],
+87 silly audit   'side-channel': [ '1.1.1' ],
+87 silly audit   'side-channel-list': [ '1.0.1' ],
+87 silly audit   'side-channel-map': [ '1.0.1' ],
+87 silly audit   'side-channel-weakmap': [ '1.0.2' ],
+87 silly audit   'source-map-js': [ '1.2.1' ],
+87 silly audit   'stable-hash': [ '0.0.5' ],
+87 silly audit   'stop-iteration-iterator': [ '1.1.0' ],
+87 silly audit   'string.prototype.includes': [ '2.0.1' ],
+87 silly audit   'string.prototype.matchall': [ '4.0.12' ],
+87 silly audit   'string.prototype.repeat': [ '1.0.0' ],
+87 silly audit   'string.prototype.trim': [ '1.2.11' ],
+87 silly audit   'string.prototype.trimend': [ '1.0.10' ],
+87 silly audit   'string.prototype.trimstart': [ '1.0.8' ],
+87 silly audit   'strip-bom': [ '3.0.0' ],
+87 silly audit   'strip-json-comments': [ '3.1.1' ],
+87 silly audit   'styled-jsx': [ '5.1.6' ],
+87 silly audit   'supports-color': [ '7.2.0' ],
+87 silly audit   'supports-preserve-symlinks-flag': [ '1.0.0' ],
+87 silly audit   tailwindcss: [ '4.3.3' ],
+87 silly audit   tapable: [ '2.3.3' ],
+87 silly audit   tinyglobby: [ '0.2.17' ],
+87 silly audit   fdir: [ '6.5.0' ],
+87 silly audit   'to-regex-range': [ '5.0.1' ],
+87 silly audit   'ts-api-utils': [ '2.5.0' ],
+87 silly audit   'tsconfig-paths': [ '3.15.0' ],
+87 silly audit   tslib: [ '2.8.1' ],
+87 silly audit   'type-check': [ '0.4.0' ],
+87 silly audit   'typed-array-buffer': [ '1.0.3' ],
+87 silly audit   'typed-array-byte-length': [ '1.0.3' ],
+87 silly audit   'typed-array-byte-offset': [ '1.0.4' ],
+87 silly audit   'typed-array-length': [ '1.0.8' ],
+87 silly audit   typescript: [ '5.9.3' ],
+87 silly audit   'unbox-primitive': [ '1.1.0' ],
+87 silly audit   'undici-types': [ '6.21.0' ],
+87 silly audit   'unrs-resolver': [ '1.12.2' ],
+87 silly audit   'uri-js': [ '4.4.1' ],
+87 silly audit   which: [ '2.0.2' ],
+87 silly audit   'which-boxed-primitive': [ '1.1.1' ],
+87 silly audit   'which-builtin-type': [ '1.2.1' ],
+87 silly audit   'which-collection': [ '1.0.2' ],
+87 silly audit   'which-typed-array': [ '1.1.22' ],
+87 silly audit   'word-wrap': [ '1.2.5' ],
+87 silly audit   'yocto-queue': [ '0.1.0' ],
+87 silly audit   flubber: [ '0.4.2' ],
+87 silly audit   'd3-array': [ '1.2.4' ],
+87 silly audit   'd3-polygon': [ '1.0.6' ],
+87 silly audit   earcut: [ '2.2.4' ],
+87 silly audit   'svg-path-properties': [ '0.2.2' ],
+87 silly audit   svgpath: [ '2.6.0' ],
+87 silly audit   'topojson-client': [ '3.1.0' ],
+87 silly audit   commander: [ '2.20.3' ],
+87 silly audit   '@tailwindcss/oxide-wasm32-wasi': [ '4.3.3' ]
+87 silly audit }
+88 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/lightningcss-win32-x64-msvc
+89 silly reify mark deleted [
+89 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/lightningcss-win32-x64-msvc'
+89 silly reify ]
+90 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/lightningcss-win32-arm64-msvc
+91 silly reify mark deleted [
+91 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/lightningcss-win32-arm64-msvc'
+91 silly reify ]
+92 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/lightningcss-linux-x64-musl
+93 silly reify mark deleted [
+93 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/lightningcss-linux-x64-musl'
+93 silly reify ]
+94 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/lightningcss-linux-x64-gnu
+95 silly reify mark deleted [
+95 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/lightningcss-linux-x64-gnu'
+95 silly reify ]
+96 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/lightningcss-linux-arm64-musl
+97 silly reify mark deleted [
+97 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/lightningcss-linux-arm64-musl'
+97 silly reify ]
+98 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/lightningcss-linux-arm64-gnu
+99 silly reify mark deleted [
+99 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/lightningcss-linux-arm64-gnu'
+99 silly reify ]
+100 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/lightningcss-linux-arm-gnueabihf
+101 silly reify mark deleted [
+101 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/lightningcss-linux-arm-gnueabihf'
+101 silly reify ]
+102 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/lightningcss-freebsd-x64
+103 silly reify mark deleted [
+103 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/lightningcss-freebsd-x64'
+103 silly reify ]
+104 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/lightningcss-darwin-x64
+105 silly reify mark deleted [
+105 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/lightningcss-darwin-x64'
+105 silly reify ]
+106 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/lightningcss-android-arm64
+107 silly reify mark deleted [
+107 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/lightningcss-android-arm64'
+107 silly reify ]
+108 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-win32-x64-msvc
+109 silly reify mark deleted [
+109 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-win32-x64-msvc'
+109 silly reify ]
+110 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-win32-ia32-msvc
+111 silly reify mark deleted [
+111 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-win32-ia32-msvc'
+111 silly reify ]
+112 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-win32-arm64-msvc
+113 silly reify mark deleted [
+113 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-win32-arm64-msvc'
+113 silly reify ]
+114 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-wasm32-wasi
+115 silly reify mark deleted [
+115 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-wasm32-wasi'
+115 silly reify ]
+116 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-wasm32-wasi/node_modules/@emnapi/runtime
+117 silly reify mark deleted [
+117 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-wasm32-wasi/node_modules/@emnapi/runtime'
+117 silly reify ]
+118 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-openharmony-arm64
+119 silly reify mark deleted [
+119 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-openharmony-arm64'
+119 silly reify ]
+120 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-x64-musl
+121 silly reify mark deleted [
+121 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-x64-musl'
+121 silly reify ]
+122 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-x64-gnu
+123 silly reify mark deleted [
+123 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-x64-gnu'
+123 silly reify ]
+124 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-s390x-gnu
+125 silly reify mark deleted [
+125 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-s390x-gnu'
+125 silly reify ]
+126 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-riscv64-musl
+127 silly reify mark deleted [
+127 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-riscv64-musl'
+127 silly reify ]
+128 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-riscv64-gnu
+129 silly reify mark deleted [
+129 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-riscv64-gnu'
+129 silly reify ]
+130 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-ppc64-gnu
+131 silly reify mark deleted [
+131 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-ppc64-gnu'
+131 silly reify ]
+132 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-loong64-musl
+133 silly reify mark deleted [
+133 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-loong64-musl'
+133 silly reify ]
+134 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-loong64-gnu
+135 silly reify mark deleted [
+135 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-loong64-gnu'
+135 silly reify ]
+136 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-arm64-musl
+137 silly reify mark deleted [
+137 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-arm64-musl'
+137 silly reify ]
+138 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-arm64-gnu
+139 silly reify mark deleted [
+139 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-arm64-gnu'
+139 silly reify ]
+140 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-arm-musleabihf
+141 silly reify mark deleted [
+141 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-arm-musleabihf'
+141 silly reify ]
+142 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-arm-gnueabihf
+143 silly reify mark deleted [
+143 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-linux-arm-gnueabihf'
+143 silly reify ]
+144 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-freebsd-x64
+145 silly reify mark deleted [
+145 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-freebsd-x64'
+145 silly reify ]
+146 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-darwin-x64
+147 silly reify mark deleted [
+147 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-darwin-x64'
+147 silly reify ]
+148 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-android-arm64
+149 silly reify mark deleted [
+149 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-android-arm64'
+149 silly reify ]
+150 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-android-arm-eabi
+151 silly reify mark deleted [
+151 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-android-arm-eabi'
+151 silly reify ]
+152 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-win32-x64-msvc
+153 silly reify mark deleted [
+153 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-win32-x64-msvc'
+153 silly reify ]
+154 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-win32-arm64-msvc
+155 silly reify mark deleted [
+155 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-win32-arm64-msvc'
+155 silly reify ]
+156 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-linux-x64-musl
+157 silly reify mark deleted [
+157 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-linux-x64-musl'
+157 silly reify ]
+158 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-linux-x64-gnu
+159 silly reify mark deleted [
+159 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-linux-x64-gnu'
+159 silly reify ]
+160 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-linux-arm64-musl
+161 silly reify mark deleted [
+161 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-linux-arm64-musl'
+161 silly reify ]
+162 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-linux-arm64-gnu
+163 silly reify mark deleted [
+163 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-linux-arm64-gnu'
+163 silly reify ]
+164 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-linux-arm-gnueabihf
+165 silly reify mark deleted [
+165 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-linux-arm-gnueabihf'
+165 silly reify ]
+166 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-freebsd-x64
+167 silly reify mark deleted [
+167 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-freebsd-x64'
+167 silly reify ]
+168 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-darwin-x64
+169 silly reify mark deleted [
+169 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-darwin-x64'
+169 silly reify ]
+170 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-android-arm64
+171 silly reify mark deleted [
+171 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-android-arm64'
+171 silly reify ]
+172 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@next/swc-win32-x64-msvc
+173 silly reify mark deleted [
+173 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@next/swc-win32-x64-msvc'
+173 silly reify ]
+174 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@next/swc-win32-arm64-msvc
+175 silly reify mark deleted [
+175 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@next/swc-win32-arm64-msvc'
+175 silly reify ]
+176 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@next/swc-linux-x64-musl
+177 silly reify mark deleted [
+177 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@next/swc-linux-x64-musl'
+177 silly reify ]
+178 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@next/swc-linux-x64-gnu
+179 silly reify mark deleted [
+179 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@next/swc-linux-x64-gnu'
+179 silly reify ]
+180 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@next/swc-linux-arm64-musl
+181 silly reify mark deleted [
+181 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@next/swc-linux-arm64-musl'
+181 silly reify ]
+182 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@next/swc-linux-arm64-gnu
+183 silly reify mark deleted [
+183 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@next/swc-linux-arm64-gnu'
+183 silly reify ]
+184 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@next/swc-darwin-x64
+185 silly reify mark deleted [ '/Users/kiranpatel/Desktop/idek/node_modules/@next/swc-darwin-x64' ]
+186 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@napi-rs/wasm-runtime
+187 silly reify mark deleted [ '/Users/kiranpatel/Desktop/idek/node_modules/@napi-rs/wasm-runtime' ]
+188 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-wasm32-wasi
+189 silly reify mark deleted [
+189 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@tailwindcss/oxide-wasm32-wasi'
+189 silly reify ]
+190 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-wasm32-wasi
+191 silly reify mark deleted [
+191 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-wasm32-wasi'
+191 silly reify ]
+192 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@emnapi/core
+193 silly reify mark deleted [ '/Users/kiranpatel/Desktop/idek/node_modules/@emnapi/core' ]
+194 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@tybys/wasm-util
+195 silly reify mark deleted [ '/Users/kiranpatel/Desktop/idek/node_modules/@tybys/wasm-util' ]
+196 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@emnapi/wasi-threads
+197 silly reify mark deleted [ '/Users/kiranpatel/Desktop/idek/node_modules/@emnapi/wasi-threads' ]
+198 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-wasm32-wasi/node_modules/@emnapi/runtime
+199 silly reify mark deleted [
+199 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@unrs/resolver-binding-wasm32-wasi/node_modules/@emnapi/runtime'
+199 silly reify ]
+200 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-win32-x64
+201 silly reify mark deleted [ '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-win32-x64' ]
+202 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-win32-ia32
+203 silly reify mark deleted [ '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-win32-ia32' ]
+204 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-win32-arm64
+205 silly reify mark deleted [
+205 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-win32-arm64'
+205 silly reify ]
+206 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-wasm32
+207 silly reify mark deleted [ '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-wasm32' ]
+208 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linuxmusl-x64
+209 silly reify mark deleted [
+209 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linuxmusl-x64'
+209 silly reify ]
+210 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linuxmusl-arm64
+211 silly reify mark deleted [
+211 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linuxmusl-arm64'
+211 silly reify ]
+212 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-x64
+213 silly reify mark deleted [ '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-x64' ]
+214 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-s390x
+215 silly reify mark deleted [
+215 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-s390x'
+215 silly reify ]
+216 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-riscv64
+217 silly reify mark deleted [
+217 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-riscv64'
+217 silly reify ]
+218 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-ppc64
+219 silly reify mark deleted [
+219 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-ppc64'
+219 silly reify ]
+220 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-arm64
+221 silly reify mark deleted [
+221 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-arm64'
+221 silly reify ]
+222 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-arm
+223 silly reify mark deleted [ '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-linux-arm' ]
+224 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linuxmusl-x64
+225 silly reify mark deleted [
+225 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linuxmusl-x64'
+225 silly reify ]
+226 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linuxmusl-arm64
+227 silly reify mark deleted [
+227 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linuxmusl-arm64'
+227 silly reify ]
+228 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-x64
+229 silly reify mark deleted [
+229 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-x64'
+229 silly reify ]
+230 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-s390x
+231 silly reify mark deleted [
+231 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-s390x'
+231 silly reify ]
+232 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-riscv64
+233 silly reify mark deleted [
+233 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-riscv64'
+233 silly reify ]
+234 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-ppc64
+235 silly reify mark deleted [
+235 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-ppc64'
+235 silly reify ]
+236 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-arm64
+237 silly reify mark deleted [
+237 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-arm64'
+237 silly reify ]
+238 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-arm
+239 silly reify mark deleted [
+239 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-linux-arm'
+239 silly reify ]
+240 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-darwin-x64
+241 silly reify mark deleted [
+241 silly reify   '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-libvips-darwin-x64'
+241 silly reify ]
+242 verbose reify failed optional dependency /Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-darwin-x64
+243 silly reify mark deleted [ '/Users/kiranpatel/Desktop/idek/node_modules/@img/sharp-darwin-x64' ]
+244 timing reifyNode:node_modules/lightningcss-win32-x64-msvc Completed in 9ms
+245 timing reifyNode:node_modules/lightningcss-win32-arm64-msvc Completed in 9ms
+246 timing reifyNode:node_modules/lightningcss-linux-x64-musl Completed in 9ms
+247 timing reifyNode:node_modules/lightningcss-linux-x64-gnu Completed in 9ms
+248 timing reifyNode:node_modules/lightningcss-linux-arm64-musl Completed in 9ms
+249 timing reifyNode:node_modules/lightningcss-linux-arm64-gnu Completed in 9ms
+250 timing reifyNode:node_modules/lightningcss-linux-arm-gnueabihf Completed in 9ms
+251 timing reifyNode:node_modules/lightningcss-freebsd-x64 Completed in 9ms
+252 timing reifyNode:node_modules/lightningcss-darwin-x64 Completed in 9ms
+253 timing reifyNode:node_modules/lightningcss-android-arm64 Completed in 8ms
+254 timing reifyNode:node_modules/@unrs/resolver-binding-win32-x64-msvc Completed in 9ms
+255 timing reifyNode:node_modules/@unrs/resolver-binding-win32-ia32-msvc Completed in 9ms
+256 timing reifyNode:node_modules/@unrs/resolver-binding-win32-arm64-msvc Completed in 9ms
+257 timing reifyNode:node_modules/@unrs/resolver-binding-wasm32-wasi Completed in 9ms
+258 timing reifyNode:node_modules/@unrs/resolver-binding-openharmony-arm64 Completed in 9ms
+259 timing reifyNode:node_modules/@unrs/resolver-binding-linux-x64-musl Completed in 9ms
+260 timing reifyNode:node_modules/@unrs/resolver-binding-linux-x64-gnu Completed in 9ms
+261 timing reifyNode:node_modules/@unrs/resolver-binding-linux-s390x-gnu Completed in 9ms
+262 timing reifyNode:node_modules/@unrs/resolver-binding-linux-riscv64-musl Completed in 9ms
+263 timing reifyNode:node_modules/@unrs/resolver-binding-linux-riscv64-gnu Completed in 9ms
+264 timing reifyNode:node_modules/@unrs/resolver-binding-linux-ppc64-gnu Completed in 9ms
+265 timing reifyNode:node_modules/@unrs/resolver-binding-linux-loong64-musl Completed in 9ms
+266 timing reifyNode:node_modules/@unrs/resolver-binding-linux-loong64-gnu Completed in 9ms
+267 timing reifyNode:node_modules/@unrs/resolver-binding-linux-arm64-musl Completed in 9ms
+268 timing reifyNode:node_modules/@unrs/resolver-binding-linux-arm64-gnu Completed in 9ms
+269 timing reifyNode:node_modules/@unrs/resolver-binding-linux-arm-musleabihf Completed in 9ms
+270 timing reifyNode:node_modules/@unrs/resolver-binding-linux-arm-gnueabihf Completed in 9ms
+271 timing reifyNode:node_modules/@unrs/resolver-binding-freebsd-x64 Completed in 9ms
+272 timing reifyNode:node_modules/@unrs/resolver-binding-darwin-x64 Completed in 9ms
+273 timing reifyNode:node_modules/@unrs/resolver-binding-android-arm64 Completed in 9ms
+274 timing reifyNode:node_modules/@unrs/resolver-binding-android-arm-eabi Completed in 9ms
+275 timing reifyNode:node_modules/@tailwindcss/oxide-win32-x64-msvc Completed in 9ms
+276 timing reifyNode:node_modules/@tailwindcss/oxide-win32-arm64-msvc Completed in 9ms
+277 timing reifyNode:node_modules/@tailwindcss/oxide-linux-x64-musl Completed in 9ms
+278 timing reifyNode:node_modules/@tailwindcss/oxide-linux-x64-gnu Completed in 9ms
+279 timing reifyNode:node_modules/@tailwindcss/oxide-linux-arm64-musl Completed in 8ms
+280 timing reifyNode:node_modules/@tailwindcss/oxide-linux-arm64-gnu Completed in 8ms
+281 timing reifyNode:node_modules/@tailwindcss/oxide-linux-arm-gnueabihf Completed in 8ms
+282 timing reifyNode:node_modules/@tailwindcss/oxide-freebsd-x64 Completed in 8ms
+283 timing reifyNode:node_modules/@tailwindcss/oxide-darwin-x64 Completed in 8ms
+284 timing reifyNode:node_modules/@tailwindcss/oxide-android-arm64 Completed in 8ms
+285 timing reifyNode:node_modules/@next/swc-win32-x64-msvc Completed in 8ms
+286 timing reifyNode:node_modules/@next/swc-win32-arm64-msvc Completed in 8ms
+287 timing reifyNode:node_modules/@next/swc-linux-x64-musl Completed in 8ms
+288 timing reifyNode:node_modules/@next/swc-linux-x64-gnu Completed in 8ms
+289 timing reifyNode:node_modules/@next/swc-linux-arm64-musl Completed in 8ms
+290 timing reifyNode:node_modules/@next/swc-linux-arm64-gnu Completed in 8ms
+291 timing reifyNode:node_modules/@next/swc-darwin-x64 Completed in 8ms
+292 timing reifyNode:node_modules/@napi-rs/wasm-runtime Completed in 8ms
+293 timing reifyNode:node_modules/@img/sharp-win32-x64 Completed in 8ms
+294 timing reifyNode:node_modules/@img/sharp-win32-ia32 Completed in 8ms
+295 timing reifyNode:node_modules/@img/sharp-win32-arm64 Completed in 8ms
+296 timing reifyNode:node_modules/@img/sharp-wasm32 Completed in 8ms
+297 timing reifyNode:node_modules/@img/sharp-linuxmusl-x64 Completed in 8ms
+298 timing reifyNode:node_modules/@img/sharp-linuxmusl-arm64 Completed in 8ms
+299 timing reifyNode:node_modules/@img/sharp-linux-x64 Completed in 8ms
+300 timing reifyNode:node_modules/@img/sharp-linux-s390x Completed in 8ms
+301 timing reifyNode:node_modules/@img/sharp-linux-riscv64 Completed in 8ms
+302 timing reifyNode:node_modules/@img/sharp-linux-ppc64 Completed in 8ms
+303 timing reifyNode:node_modules/@img/sharp-linux-arm64 Completed in 8ms
+304 timing reifyNode:node_modules/@img/sharp-linux-arm Completed in 8ms
+305 timing reifyNode:node_modules/@img/sharp-libvips-linuxmusl-x64 Completed in 9ms
+306 timing reifyNode:node_modules/@img/sharp-libvips-linuxmusl-arm64 Completed in 9ms
+307 timing reifyNode:node_modules/@img/sharp-libvips-linux-x64 Completed in 8ms
+308 timing reifyNode:node_modules/@img/sharp-libvips-linux-s390x Completed in 8ms
+309 timing reifyNode:node_modules/@img/sharp-libvips-linux-riscv64 Completed in 8ms
+310 timing reifyNode:node_modules/@img/sharp-libvips-linux-ppc64 Completed in 8ms
+311 timing reifyNode:node_modules/@img/sharp-libvips-linux-arm64 Completed in 8ms
+312 timing reifyNode:node_modules/@img/sharp-libvips-linux-arm Completed in 8ms
+313 timing reifyNode:node_modules/@img/sharp-libvips-darwin-x64 Completed in 8ms
+314 timing reifyNode:node_modules/@img/sharp-darwin-x64 Completed in 8ms
+315 silly tarball no local data for commander@https://registry.npmjs.org/commander/-/commander-2.20.3.tgz. Extracting by manifest.
+316 silly tarball no local data for earcut@https://registry.npmjs.org/earcut/-/earcut-2.2.4.tgz. Extracting by manifest.
+317 silly tarball no local data for svg-path-properties@https://registry.npmjs.org/svg-path-properties/-/svg-path-properties-0.2.2.tgz. Extracting by manifest.
+318 silly tarball no local data for svgpath@https://registry.npmjs.org/svgpath/-/svgpath-2.6.0.tgz. Extracting by manifest.
+319 silly tarball no local data for d3-polygon@https://registry.npmjs.org/d3-polygon/-/d3-polygon-1.0.6.tgz. Extracting by manifest.
+320 silly tarball no local data for d3-array@https://registry.npmjs.org/d3-array/-/d3-array-1.2.4.tgz. Extracting by manifest.
+321 silly tarball no local data for topojson-client@https://registry.npmjs.org/topojson-client/-/topojson-client-3.1.0.tgz. Extracting by manifest.
+322 silly tarball no local data for flubber@https://registry.npmjs.org/flubber/-/flubber-0.4.2.tgz. Extracting by manifest.
+323 silly tarball no local data for @tybys/wasm-util@https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.3.tgz. Extracting by manifest.
+324 silly tarball no local data for @emnapi/core@https://registry.npmjs.org/@emnapi/core/-/core-1.10.0.tgz. Extracting by manifest.
+325 silly tarball no local data for @emnapi/runtime@https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.10.0.tgz. Extracting by manifest.
+326 silly tarball no local data for @emnapi/wasi-threads@https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.1.tgz. Extracting by manifest.
+327 http fetch GET 200 https://registry.npmjs.org/d3-polygon/-/d3-polygon-1.0.6.tgz 57ms (cache miss)
+328 timing reifyNode:node_modules/d3-polygon Completed in 74ms
+329 http fetch GET 200 https://registry.npmjs.org/commander/-/commander-2.20.3.tgz 61ms (cache miss)
+330 timing reifyNode:node_modules/commander Completed in 75ms
+331 http fetch GET 200 https://registry.npmjs.org/svgpath/-/svgpath-2.6.0.tgz 61ms (cache miss)
+332 timing reifyNode:node_modules/svgpath Completed in 77ms
+333 http fetch GET 200 https://registry.npmjs.org/earcut/-/earcut-2.2.4.tgz 62ms (cache miss)
+334 timing reifyNode:node_modules/earcut Completed in 77ms
+335 http fetch GET 200 https://registry.npmjs.org/d3-array/-/d3-array-1.2.4.tgz 63ms (cache miss)
+336 timing reifyNode:node_modules/d3-array Completed in 79ms
+337 http fetch GET 200 https://registry.npmjs.org/svg-path-properties/-/svg-path-properties-0.2.2.tgz 68ms (cache miss)
+338 timing reifyNode:node_modules/svg-path-properties Completed in 84ms
+339 http fetch GET 200 https://registry.npmjs.org/topojson-client/-/topojson-client-3.1.0.tgz 68ms (cache miss)
+340 timing reifyNode:node_modules/topojson-client Completed in 84ms
+341 http fetch POST 200 https://registry.npmjs.org/-/npm/v1/security/advisories/bulk 94ms
+342 timing auditReport:getReport Completed in 97ms
+343 silly audit report {
+343 silly audit report   'brace-expansion': [
+343 silly audit report     {
+343 silly audit report       id: 1130734,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-rgw5-rvv9-x895',
+343 silly audit report       title: 'brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation',
+343 silly audit report       severity: 'high',
+343 silly audit report       vulnerable_versions: '>=4.0.0 <5.0.9',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     },
+343 silly audit report     {
+343 silly audit report       id: 1130737,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-rgw5-rvv9-x895',
+343 silly audit report       title: 'brace-expansion: DoS via unbounded intermediate arrays, bypassing the CVE-2026-14257 mitigation',
+343 silly audit report       severity: 'high',
+343 silly audit report       vulnerable_versions: '<1.1.18',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     }
+343 silly audit report   ],
+343 silly audit report   'js-yaml': [
+343 silly audit report     {
+343 silly audit report       id: 1138115,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-5p4m-2wfm-xmqj',
+343 silly audit report       title: 'JS-YAML: Quadratic CPU consumption in !!omap resolution (3.x and 4.x) — CVE-2026-59870 fix not backported',
+343 silly audit report       severity: 'high',
+343 silly audit report       vulnerable_versions: '>=4.0.0 <4.3.1',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     }
+343 silly audit report   ],
+343 silly audit report   nanoid: [
+343 silly audit report     {
+343 silly audit report       id: 1138813,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-2v37-7h3g-55p8',
+343 silly audit report       title: 'nanoid: custom generators can loop indefinitely when size is zero',
+343 silly audit report       severity: 'high',
+343 silly audit report       vulnerable_versions: '<3.3.17',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     }
+343 silly audit report   ],
+343 silly audit report   next: [
+343 silly audit report     {
+343 silly audit report       id: 1124185,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-89xv-2m56-2m9x',
+343 silly audit report       title: 'Next.js: Server-Side Request Forgery in Server Actions on custom servers',
+343 silly audit report       severity: 'high',
+343 silly audit report       vulnerable_versions: '>=14.1.1 <15.5.21',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     },
+343 silly audit report     {
+343 silly audit report       id: 1124172,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-m99w-x7hq-7vfj',
+343 silly audit report       title: 'Next.js: Denial of Service in App Router using Server Actions',
+343 silly audit report       severity: 'high',
+343 silly audit report       vulnerable_versions: '>=13.0.0 <15.5.21',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     },
+343 silly audit report     {
+343 silly audit report       id: 1124187,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-68g3-v927-f742',
+343 silly audit report       title: 'Next.js: Cache confusion of response bodies for requests with bodies',
+343 silly audit report       severity: 'moderate',
+343 silly audit report       vulnerable_versions: '>=13.0.0 <15.5.21',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     },
+343 silly audit report     {
+343 silly audit report       id: 1124189,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-4633-3j49-mh5q',
+343 silly audit report       title: 'Next.js: Cache confusion of response bodies for requests with bodies containing invalid UTF-8 byte sequences',
+343 silly audit report       severity: 'moderate',
+343 silly audit report       vulnerable_versions: '>=13.0.0 <15.5.21',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     },
+343 silly audit report     {
+343 silly audit report       id: 1124191,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-4c39-4ccg-62r3',
+343 silly audit report       title: 'Next.js: Unbounded Server Action payload in Edge runtime',
+343 silly audit report       severity: 'moderate',
+343 silly audit report       vulnerable_versions: '>=13.0.0 <15.5.21',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     },
+343 silly audit report     {
+343 silly audit report       id: 1124193,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-p9j2-gv94-2wf4',
+343 silly audit report       title: 'Next.js: Server-Side Request Forgery in rewrites via attacker-controlled destination hostname',
+343 silly audit report       severity: 'high',
+343 silly audit report       vulnerable_versions: '>=12.0.0 <15.5.21',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     },
+343 silly audit report     {
+343 silly audit report       id: 1124195,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-q8wf-6r8g-63ch',
+343 silly audit report       title: 'Next.js: Denial of Service in the Image Optimization API using SVGs',
+343 silly audit report       severity: 'moderate',
+343 silly audit report       vulnerable_versions: '>=15.5.0 <15.5.21',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     },
+343 silly audit report     {
+343 silly audit report       id: 1124197,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-955p-x3mx-jcvp',
+343 silly audit report       title: 'Next.js: Unauthenticated disclosure of internal Server Function endpoints',
+343 silly audit report       severity: 'moderate',
+343 silly audit report       vulnerable_versions: '>=13.0.0 <15.5.21',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     }
+343 silly audit report   ],
+343 silly audit report   postcss: [
+343 silly audit report     {
+343 silly audit report       id: 1130709,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-fxqj-rqcc-2cmp',
+343 silly audit report       title: 'PostCSS: incomplete fix of GHSA-6g55-p6wh-862q — attacker-controlled sourceMappingURL reads arbitrary .map files when `from` is unset',
+343 silly audit report       severity: 'moderate',
+343 silly audit report       vulnerable_versions: '<=8.5.22',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     },
+343 silly audit report     {
+343 silly audit report       id: 1117015,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-qx2v-qp2m-jg93',
+343 silly audit report       title: 'PostCSS has XSS via Unescaped </style> in its CSS Stringify Output',
+343 silly audit report       severity: 'moderate',
+343 silly audit report       vulnerable_versions: '<8.5.10',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     },
+343 silly audit report     {
+343 silly audit report       id: 1124252,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-6g55-p6wh-862q',
+343 silly audit report       title: 'PostCSS: Arbitrary file read and information disclosure via attacker-controlled sourceMappingURL in CSS comments',
+343 silly audit report       severity: 'high',
+343 silly audit report       vulnerable_versions: '<=8.5.11',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     },
+343 silly audit report     {
+343 silly audit report       id: 1124288,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-r28c-9q8g-f849',
+343 silly audit report       title: 'PostCSS: Path Traversal in Previous Source Map Auto-Loading (sourceMappingURL) leads to Arbitrary .map File Disclosure',
+343 silly audit report       severity: 'high',
+343 silly audit report       vulnerable_versions: '<=8.5.17',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     }
+343 silly audit report   ],
+343 silly audit report   sharp: [
+343 silly audit report     {
+343 silly audit report       id: 1124066,
+343 silly audit report       url: 'https://github.com/advisories/GHSA-f88m-g3jw-g9cj',
+343 silly audit report       title: 'sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591',
+343 silly audit report       severity: 'high',
+343 silly audit report       vulnerable_versions: '<0.35.0',
+343 silly audit report       cwe: [Array],
+343 silly audit report       cvss: [Object]
+343 silly audit report     }
+343 silly audit report   ]
+343 silly audit report }
+344 timing metavuln:cache:get:security-advisory:brace-expansion:z170evxdx7PQq+IWrK1C3ABYONyn+YMwxUxx7d0gDcJ8VYHNWzgMq6G7Wto6skat02By9kceLGqSqYodHqX+gA== Completed in 3ms
+345 timing metavuln:cache:get:security-advisory:brace-expansion:7ICbONgS6sI8RWhzTgNqqH552BWC4INFpZZfXI9U4oWgS/KeQEBLPtG82pnddpKRYaLAG9ti7ET/UUaZIDmFqA== Completed in 2ms
+346 timing metavuln:cache:get:security-advisory:js-yaml:OUZIQ3PVVGrkuRqB+emtTIY6mY1ZYXKAjty3MEHcLQlklmPh5BstzoMFTWmQmZxuW4bTRahKM6+bAF3EDZo2xw== Completed in 2ms
+347 timing metavuln:cache:get:security-advisory:nanoid:MC8dnmC50diS7m0EN/zGoD5Xsi0285J+6WJeU6TW1CIMF2f79UT3wjW98LxZf1iFuRFzJthRVehgEadcwlq6Vg== Completed in 2ms
+348 timing metavuln:cache:get:security-advisory:next:cZ6OoV2Yic3pKTVKWM708NyiYbU3eZO1UXbYmn0kthDYcmREJe5mE1zcJHSOZi/YbdCxNy+idGHHRzG5idxOrA== Completed in 2ms
+349 timing metavuln:cache:get:security-advisory:next:yos6Q/8ldNg4cAnbkKSHOmtu1rp9E1oF5bR0CEDZqA3wIlDCz8yt3pfi32dMl7zQ2lXJzGvCp5zUjdyEnHq0iQ== Completed in 2ms
+350 timing metavuln:cache:get:security-advisory:next:fnio781IRK2W7XoS3G7Up6+M5VUvY4zyA/2G+Eju3xGfgF4bCbMLow1HCd16OUURxF7IqHyz6Yo0X2LxXAbeVQ== Completed in 2ms
+351 timing metavuln:cache:get:security-advisory:next:946AF1QwAU4SXAd5aWKfhcmAGKxGvL49GMSiWwQAiLOdZGEKvKq1QQ8g5sAdE0gZU2B8U3brIPjWf7FHy89HAg== Completed in 2ms
+352 timing metavuln:cache:get:security-advisory:next:ezdIQZO7Cc28S3fxmDpZW1cK5d5FOHnm/OuO5tdXzgfM3FtFExNbKkQD7IWliLd4erTD3l6mfyiXiGUWmfc42w== Completed in 2ms
+353 timing metavuln:cache:get:security-advisory:next:hIOMnj58e6JD7YssvYqqWPbKmGbcOX4279r3BRBdpe6jkiF2DQgG4461MZNJC1Eb6xPZCSPQXC40NqUvq3DOqA== Completed in 2ms
+354 timing metavuln:cache:get:security-advisory:next:u522ZnawwOcwLGx54KC0YCb5Pf+2eKOCEkOS9842DcZ2GWWcPOG9EGePBmpsahW6UxwNAuZmsYcmypTXTlJGAw== Completed in 1ms
+355 timing metavuln:cache:get:security-advisory:next:0lMSV7d/KDMx7fptosIHMFw8GdGsFcTsiX3MLM9HVoau8oy472GdqZGTwmxXKKglh+IxWYWrNMgIt/FS6dy52w== Completed in 1ms
+356 timing metavuln:cache:get:security-advisory:postcss:AESkqup7C9sLtHL0OzenAvihqmLzSTOW4+0zIkCCeUjI0qvgEu/UCFfVCIlWzUpfDq20KxUSH5Ru8h4LoxJKRA== Completed in 1ms
+357 timing metavuln:cache:get:security-advisory:postcss:685RVq5xScaqegAXk2BRJrsMaZmsz1d/volUoA67iVw3AvHhUlX03u+VPRrmo8iuObcSDvuZF+fuiOnLC9L1uA== Completed in 1ms
+358 timing metavuln:cache:get:security-advisory:postcss:vffDf5zeMAO2NG2g47VKaOSrYbOxy9RP7hONH+CZvut446KUCIkc3Fp1vXR3T1gMxB3d9F68wTGe2BUQF6ut/w== Completed in 1ms
+359 timing metavuln:cache:get:security-advisory:postcss:o0q0EDh/c/yXO8mW7onxyfY8gGQ+yllv0PybMT2eaE76E/1OkdcEp4nbyN5c17b8FHTbrA+h3QdVSYn/qLhRng== Completed in 1ms
+360 timing metavuln:cache:get:security-advisory:sharp:AMhKztAOenk9sflyUi4sMyO4lcyKWfRBC9XaNvNYljUSLorFYtX31vJVIzKu5+H8cmhPDpmsteYIph4wPng+FA== Completed in 1ms
+361 http fetch GET 200 https://registry.npmjs.org/flubber/-/flubber-0.4.2.tgz 83ms (cache miss)
+362 timing reifyNode:node_modules/flubber Completed in 101ms
+363 http fetch GET 200 https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.1.tgz 96ms (cache miss)
+364 timing reifyNode:node_modules/@emnapi/wasi-threads Completed in 110ms
+365 http fetch GET 200 https://registry.npmjs.org/@emnapi/runtime/-/runtime-1.10.0.tgz 101ms (cache miss)
+366 http fetch GET 200 https://registry.npmjs.org/brace-expansion 25ms (cache miss)
+367 timing metavuln:packument:brace-expansion Completed in 25ms
+368 timing metavuln:load:security-advisory:brace-expansion:1130734 Completed in 1ms
+369 timing metavuln:load:security-advisory:brace-expansion:1130737 Completed in 1ms
+370 timing reifyNode:node_modules/@unrs/resolver-binding-wasm32-wasi/node_modules/@emnapi/runtime Completed in 121ms
+371 timing metavuln:cache:put:security-advisory:brace-expansion:z170evxdx7PQq+IWrK1C3ABYONyn+YMwxUxx7d0gDcJ8VYHNWzgMq6G7Wto6skat02By9kceLGqSqYodHqX+gA== Completed in 8ms
+372 timing metavuln:calculate:security-advisory:brace-expansion:1130734 Completed in 34ms
+373 timing metavuln:cache:put:security-advisory:brace-expansion:7ICbONgS6sI8RWhzTgNqqH552BWC4INFpZZfXI9U4oWgS/KeQEBLPtG82pnddpKRYaLAG9ti7ET/UUaZIDmFqA== Completed in 8ms
+374 timing metavuln:calculate:security-advisory:brace-expansion:1130737 Completed in 34ms
+375 http fetch GET 200 https://registry.npmjs.org/js-yaml 35ms (cache miss)
+376 timing metavuln:packument:js-yaml Completed in 35ms
+377 timing metavuln:load:security-advisory:js-yaml:1138115 Completed in 1ms
+378 http fetch GET 200 https://registry.npmjs.org/@emnapi/core/-/core-1.10.0.tgz 118ms (cache miss)
+379 timing reifyNode:node_modules/@emnapi/core Completed in 133ms
+380 timing metavuln:cache:put:security-advisory:js-yaml:OUZIQ3PVVGrkuRqB+emtTIY6mY1ZYXKAjty3MEHcLQlklmPh5BstzoMFTWmQmZxuW4bTRahKM6+bAF3EDZo2xw== Completed in 5ms
+381 timing metavuln:calculate:security-advisory:js-yaml:1138115 Completed in 41ms
+382 http fetch GET 200 https://registry.npmjs.org/sharp 40ms (cache miss)
+383 timing metavuln:packument:sharp Completed in 42ms
+384 timing metavuln:load:security-advisory:sharp:1124066 Completed in 1ms
+385 http fetch GET 200 https://registry.npmjs.org/nanoid 45ms (cache miss)
+386 timing metavuln:packument:nanoid Completed in 45ms
+387 timing metavuln:load:security-advisory:nanoid:1138813 Completed in 1ms
+388 timing metavuln:cache:put:security-advisory:nanoid:MC8dnmC50diS7m0EN/zGoD5Xsi0285J+6WJeU6TW1CIMF2f79UT3wjW98LxZf1iFuRFzJthRVehgEadcwlq6Vg== Completed in 4ms
+389 timing metavuln:calculate:security-advisory:nanoid:1138813 Completed in 50ms
+390 timing metavuln:cache:put:security-advisory:sharp:AMhKztAOenk9sflyUi4sMyO4lcyKWfRBC9XaNvNYljUSLorFYtX31vJVIzKu5+H8cmhPDpmsteYIph4wPng+FA== Completed in 6ms
+391 timing metavuln:calculate:security-advisory:sharp:1124066 Completed in 49ms
+392 http fetch GET 200 https://registry.npmjs.org/@tybys/wasm-util/-/wasm-util-0.10.3.tgz 128ms (cache miss)
+393 timing reifyNode:node_modules/@tybys/wasm-util Completed in 144ms
+394 timing reify:unpack Completed in 145ms
+395 timing reify:unretire Completed in 0ms
+396 timing build:queue Completed in 1ms
+397 http fetch GET 200 https://registry.npmjs.org/postcss 53ms (cache miss)
+398 timing metavuln:packument:postcss Completed in 55ms
+399 timing metavuln:load:security-advisory:postcss:1130709 Completed in 1ms
+400 timing metavuln:load:security-advisory:postcss:1117015 Completed in 1ms
+401 timing metavuln:load:security-advisory:postcss:1124252 Completed in 3ms
+402 timing metavuln:load:security-advisory:postcss:1124288 Completed in 1ms
+403 timing build:link:node_modules/topojson-client Completed in 10ms
+404 timing build:link Completed in 10ms
+405 timing build:deps Completed in 11ms
+406 timing build Completed in 11ms
+407 timing reify:build Completed in 13ms
+408 timing metavuln:cache:put:security-advisory:postcss:AESkqup7C9sLtHL0OzenAvihqmLzSTOW4+0zIkCCeUjI0qvgEu/UCFfVCIlWzUpfDq20KxUSH5Ru8h4LoxJKRA== Completed in 15ms
+409 timing metavuln:calculate:security-advisory:postcss:1130709 Completed in 71ms
+410 timing metavuln:cache:put:security-advisory:postcss:o0q0EDh/c/yXO8mW7onxyfY8gGQ+yllv0PybMT2eaE76E/1OkdcEp4nbyN5c17b8FHTbrA+h3QdVSYn/qLhRng== Completed in 10ms
+411 timing metavuln:calculate:security-advisory:postcss:1124288 Completed in 71ms
+412 timing metavuln:cache:put:security-advisory:postcss:vffDf5zeMAO2NG2g47VKaOSrYbOxy9RP7hONH+CZvut446KUCIkc3Fp1vXR3T1gMxB3d9F68wTGe2BUQF6ut/w== Completed in 11ms
+413 timing metavuln:calculate:security-advisory:postcss:1124252 Completed in 71ms
+414 timing metavuln:cache:put:security-advisory:postcss:685RVq5xScaqegAXk2BRJrsMaZmsz1d/volUoA67iVw3AvHhUlX03u+VPRrmo8iuObcSDvuZF+fuiOnLC9L1uA== Completed in 14ms
+415 timing metavuln:calculate:security-advisory:postcss:1117015 Completed in 71ms
+416 timing reify:trash Completed in 9ms
+417 timing reify:save Completed in 85ms
+418 http fetch GET 200 https://registry.npmjs.org/next 427ms (cache miss)
+419 timing metavuln:packument:next Completed in 642ms
+420 timing metavuln:load:security-advisory:next:1124185 Completed in 57ms
+421 timing metavuln:load:security-advisory:next:1124172 Completed in 39ms
+422 timing metavuln:load:security-advisory:next:1124187 Completed in 67ms
+423 timing metavuln:load:security-advisory:next:1124189 Completed in 59ms
+424 timing metavuln:load:security-advisory:next:1124191 Completed in 66ms
+425 timing metavuln:load:security-advisory:next:1124193 Completed in 76ms
+426 timing metavuln:load:security-advisory:next:1124195 Completed in 32ms
+427 timing metavuln:load:security-advisory:next:1124197 Completed in 52ms
+428 timing metavuln:cache:put:security-advisory:next:ezdIQZO7Cc28S3fxmDpZW1cK5d5FOHnm/OuO5tdXzgfM3FtFExNbKkQD7IWliLd4erTD3l6mfyiXiGUWmfc42w== Completed in 168ms
+429 timing metavuln:calculate:security-advisory:next:1124191 Completed in 1101ms
+430 timing metavuln:cache:put:security-advisory:next:yos6Q/8ldNg4cAnbkKSHOmtu1rp9E1oF5bR0CEDZqA3wIlDCz8yt3pfi32dMl7zQ2lXJzGvCp5zUjdyEnHq0iQ== Completed in 362ms
+431 timing metavuln:calculate:security-advisory:next:1124172 Completed in 1101ms
+432 timing metavuln:cache:put:security-advisory:next:0lMSV7d/KDMx7fptosIHMFw8GdGsFcTsiX3MLM9HVoau8oy472GdqZGTwmxXKKglh+IxWYWrNMgIt/FS6dy52w== Completed in 5ms
+433 timing metavuln:calculate:security-advisory:next:1124197 Completed in 1100ms
+434 timing metavuln:cache:put:security-advisory:next:fnio781IRK2W7XoS3G7Up6+M5VUvY4zyA/2G+Eju3xGfgF4bCbMLow1HCd16OUURxF7IqHyz6Yo0X2LxXAbeVQ== Completed in 296ms
+435 timing metavuln:calculate:security-advisory:next:1124187 Completed in 1102ms
+436 timing metavuln:cache:put:security-advisory:next:u522ZnawwOcwLGx54KC0YCb5Pf+2eKOCEkOS9842DcZ2GWWcPOG9EGePBmpsahW6UxwNAuZmsYcmypTXTlJGAw== Completed in 60ms
+437 timing metavuln:calculate:security-advisory:next:1124195 Completed in 1101ms
+438 timing metavuln:cache:put:security-advisory:next:cZ6OoV2Yic3pKTVKWM708NyiYbU3eZO1UXbYmn0kthDYcmREJe5mE1zcJHSOZi/YbdCxNy+idGHHRzG5idxOrA== Completed in 403ms
+439 timing metavuln:calculate:security-advisory:next:1124185 Completed in 1102ms
+440 timing metavuln:cache:put:security-advisory:next:hIOMnj58e6JD7YssvYqqWPbKmGbcOX4279r3BRBdpe6jkiF2DQgG4461MZNJC1Eb6xPZCSPQXC40NqUvq3DOqA== Completed in 93ms
+441 timing metavuln:calculate:security-advisory:next:1124193 Completed in 1102ms
+442 timing metavuln:cache:put:security-advisory:next:946AF1QwAU4SXAd5aWKfhcmAGKxGvL49GMSiWwQAiLOdZGEKvKq1QQ8g5sAdE0gZU2B8U3brIPjWf7FHy89HAg== Completed in 236ms
+443 timing metavuln:calculate:security-advisory:next:1124189 Completed in 1102ms
+444 timing metavuln:cache:get:security-advisory:minimatch:m4n5QSPka7Fwt4Yp73PFL41C2uUcNO2PKgOJBwwWiou72V/wVcSPBfN6V6fOpxlBf3mMqj4tYVaPyUR7W1nj+A== Completed in 1ms
+445 http fetch GET 200 https://registry.npmjs.org/minimatch 111ms (cache miss)
+446 timing metavuln:packument:minimatch Completed in 112ms
+447 timing metavuln:load:security-advisory:minimatch:z170evxdx7PQq+IWrK1C3ABYONyn+YMwxUxx7d0gDcJ8VYHNWzgMq6G7Wto6skat02By9kceLGqSqYodHqX+gA== Completed in 2ms
+448 timing metavuln:cache:put:security-advisory:minimatch:m4n5QSPka7Fwt4Yp73PFL41C2uUcNO2PKgOJBwwWiou72V/wVcSPBfN6V6fOpxlBf3mMqj4tYVaPyUR7W1nj+A== Completed in 2ms
+449 timing metavuln:calculate:security-advisory:minimatch:z170evxdx7PQq+IWrK1C3ABYONyn+YMwxUxx7d0gDcJ8VYHNWzgMq6G7Wto6skat02By9kceLGqSqYodHqX+gA== Completed in 116ms
+450 timing metavuln:cache:get:security-advisory:minimatch:vhXznzlQpRWl5aSeUpyWJCF/U9sXOsJkihH53tRj/ICFM2/pIDDajgBsXDMo2Eyi1em7Yzt4NrUqf8C2gzES2A== Completed in 0ms
+451 timing metavuln:load:security-advisory:minimatch:7ICbONgS6sI8RWhzTgNqqH552BWC4INFpZZfXI9U4oWgS/KeQEBLPtG82pnddpKRYaLAG9ti7ET/UUaZIDmFqA== Completed in 1ms
+452 timing metavuln:cache:put:security-advisory:minimatch:vhXznzlQpRWl5aSeUpyWJCF/U9sXOsJkihH53tRj/ICFM2/pIDDajgBsXDMo2Eyi1em7Yzt4NrUqf8C2gzES2A== Completed in 2ms
+453 timing metavuln:calculate:security-advisory:minimatch:7ICbONgS6sI8RWhzTgNqqH552BWC4INFpZZfXI9U4oWgS/KeQEBLPtG82pnddpKRYaLAG9ti7ET/UUaZIDmFqA== Completed in 3ms
+454 timing metavuln:cache:get:security-advisory:@eslint/eslintrc:einXxnJDjlGrvetrMiooAtRhXZj9n5fB9DK8zlCAHto8ZhAG+zu9+qCIh2ILpeXTqAgxfBdgAYkHrY2SbMMNoQ== Completed in 0ms
+455 http fetch GET 200 https://registry.npmjs.org/@eslint%2feslintrc 40ms (cache miss)
+456 timing metavuln:packument:@eslint/eslintrc Completed in 40ms
+457 timing metavuln:load:security-advisory:@eslint/eslintrc:OUZIQ3PVVGrkuRqB+emtTIY6mY1ZYXKAjty3MEHcLQlklmPh5BstzoMFTWmQmZxuW4bTRahKM6+bAF3EDZo2xw== Completed in 1ms
+458 timing metavuln:cache:put:security-advisory:@eslint/eslintrc:einXxnJDjlGrvetrMiooAtRhXZj9n5fB9DK8zlCAHto8ZhAG+zu9+qCIh2ILpeXTqAgxfBdgAYkHrY2SbMMNoQ== Completed in 1ms
+459 timing metavuln:calculate:security-advisory:@eslint/eslintrc:OUZIQ3PVVGrkuRqB+emtTIY6mY1ZYXKAjty3MEHcLQlklmPh5BstzoMFTWmQmZxuW4bTRahKM6+bAF3EDZo2xw== Completed in 42ms
+460 timing metavuln:cache:get:security-advisory:postcss:F9Y9JJB3s5okNcOSnEEsyBmv8B5eiLSKhfwVW7KDBnUjbQ2XkhWy6rWx0YU5L3Kko9o7iXDkRKGHUpAJ2iyJuQ== Completed in 0ms
+461 timing metavuln:load:security-advisory:postcss:MC8dnmC50diS7m0EN/zGoD5Xsi0285J+6WJeU6TW1CIMF2f79UT3wjW98LxZf1iFuRFzJthRVehgEadcwlq6Vg== Completed in 4ms
+462 timing metavuln:cache:put:security-advisory:postcss:F9Y9JJB3s5okNcOSnEEsyBmv8B5eiLSKhfwVW7KDBnUjbQ2XkhWy6rWx0YU5L3Kko9o7iXDkRKGHUpAJ2iyJuQ== Completed in 3ms
+463 timing metavuln:calculate:security-advisory:postcss:MC8dnmC50diS7m0EN/zGoD5Xsi0285J+6WJeU6TW1CIMF2f79UT3wjW98LxZf1iFuRFzJthRVehgEadcwlq6Vg== Completed in 7ms
+464 timing metavuln:cache:get:security-advisory:next:8RlZE+IBinmJoMk6uVcV95MAfxYTQeaA9Sha1X47EU6Yn2I1DpgEjVbSe9Dat8c1Oy+nk6MRHrCODNvFggnzeg== Completed in 0ms
+465 timing metavuln:load:security-advisory:next:AESkqup7C9sLtHL0OzenAvihqmLzSTOW4+0zIkCCeUjI0qvgEu/UCFfVCIlWzUpfDq20KxUSH5Ru8h4LoxJKRA== Completed in 70ms
+466 timing metavuln:cache:put:security-advisory:next:8RlZE+IBinmJoMk6uVcV95MAfxYTQeaA9Sha1X47EU6Yn2I1DpgEjVbSe9Dat8c1Oy+nk6MRHrCODNvFggnzeg== Completed in 3ms
+467 timing metavuln:calculate:security-advisory:next:AESkqup7C9sLtHL0OzenAvihqmLzSTOW4+0zIkCCeUjI0qvgEu/UCFfVCIlWzUpfDq20KxUSH5Ru8h4LoxJKRA== Completed in 74ms
+468 timing metavuln:cache:get:security-advisory:next:ifQt7MBMqEd9Arc65bPgbO7NN/CPItaUqh9qgYerFG+D6Z5OJOW1AZSSjU1PnJnxST7gEeAzzHeGiFNe99agnA== Completed in 0ms
+469 timing metavuln:load:security-advisory:next:AMhKztAOenk9sflyUi4sMyO4lcyKWfRBC9XaNvNYljUSLorFYtX31vJVIzKu5+H8cmhPDpmsteYIph4wPng+FA== Completed in 67ms
+470 timing metavuln:cache:put:security-advisory:next:ifQt7MBMqEd9Arc65bPgbO7NN/CPItaUqh9qgYerFG+D6Z5OJOW1AZSSjU1PnJnxST7gEeAzzHeGiFNe99agnA== Completed in 2ms
+471 timing metavuln:calculate:security-advisory:next:AMhKztAOenk9sflyUi4sMyO4lcyKWfRBC9XaNvNYljUSLorFYtX31vJVIzKu5+H8cmhPDpmsteYIph4wPng+FA== Completed in 70ms
+472 timing auditReport:init Completed in 1427ms
+473 timing reify:audit Completed in 1525ms
+474 timing reify Completed in 2066ms
+475 silly ADD node_modules/commander
+476 silly ADD node_modules/topojson-client
+477 silly ADD node_modules/svgpath
+478 silly ADD node_modules/svg-path-properties
+479 silly ADD node_modules/earcut
+480 silly ADD node_modules/d3-polygon
+481 silly ADD node_modules/d3-array
+482 silly ADD node_modules/flubber
+483 silly ADD
+484 silly ADD
+485 silly ADD
+486 silly ADD
+487 silly ADD
+488 silly ADD
+489 silly ADD
+490 silly ADD
+491 silly ADD
+492 silly ADD
+493 silly ADD
+494 silly ADD
+495 silly ADD
+496 silly ADD
+497 silly ADD node_modules/@emnapi/runtime
+498 silly ADD
+499 silly ADD
+500 silly ADD
+501 silly ADD
+502 silly ADD
+503 silly ADD
+504 silly ADD
+505 silly ADD
+506 silly ADD
+507 silly ADD
+508 silly ADD
+509 silly ADD
+510 silly ADD
+511 silly ADD
+512 silly ADD
+513 silly ADD
+514 silly ADD
+515 silly ADD
+516 silly ADD
+517 silly ADD
+518 silly ADD
+519 silly ADD
+520 silly ADD
+521 silly ADD
+522 silly ADD
+523 silly ADD
+524 silly ADD
+525 silly ADD
+526 silly ADD
+527 silly ADD
+528 silly ADD
+529 silly ADD
+530 silly ADD
+531 silly ADD
+532 silly ADD
+533 silly ADD
+534 silly ADD
+535 silly ADD
+536 silly ADD
+537 silly ADD
+538 silly ADD
+539 silly ADD
+540 silly ADD
+541 silly ADD
+542 silly ADD
+543 silly ADD
+544 silly ADD
+545 silly ADD
+546 silly ADD
+547 silly ADD
+548 silly ADD
+549 silly ADD
+550 silly ADD
+551 silly ADD
+552 silly ADD
+553 silly ADD
+554 silly ADD
+555 silly ADD
+556 silly ADD
+557 silly ADD
+558 silly ADD
+559 timing command:install Completed in 2110ms
+560 notice
+560 notice New [31mmajor[39m version of npm available! [31m10.5.2[39m -> [32m12.0.2[39m
+560 notice Changelog: [36mhttps://github.com/npm/cli/releases/tag/v12.0.2[39m
+560 notice Run [32mnpm install -g npm@12.0.2[39m to update!
+560 notice
+561 verbose exit 0
+562 timing npm Completed in 2251ms
+563 info ok
