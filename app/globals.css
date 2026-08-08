@@ -23,7 +23,18 @@ h1 {
 }
 
 h2 {
-  font-size: 28px;
+  font-size: 32px;
   font-weight: 400;
   letter-spacing: -0.04em;
+}
+h3 {
+  font-family: var(--font-digital7), "Digital-7 Mono", monospace;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 0.7;
+  letter-spacing: 0em;
+}
+
+#clockTicks path {
+  stroke-linecap: round;
 }

@@ -25,6 +25,33 @@ const times = {
   },
 };
 
+const timeZones = [
+  "UTC+1",
+  "UTC+2",
+  "UTC+3",
+  "UTC+4",
+  "UTC+5",
+  "UTC+6",
+  "UTC+7",
+  "UTC+8",
+  "UTC+9",
+  "UTC+10",
+  "UTC+11",
+  "UTC+12",
+  "UTC-11",
+  "UTC-10",
+  "UTC-9",
+  "UTC-8",
+  "UTC-7",
+  "UTC-6",
+  "UTC-5",
+  "UTC-4",
+  "UTC-3",
+  "UTC-2",
+  "UTC-1",
+  "UTC+0",
+];
+
 const offsetsRaw = [
   0, 0.01431, 0.03715, 0.061142, 0.076562, 0.093753, 0.117719, 0.144881,
   0.174599, 0.205915, 0.245539, 0.297306, 0.354049, 0.490883, 0.643181, 1,
@@ -54,6 +81,27 @@ function rgbToHex(r: number, g: number, b: number): string {
   );
 }
 
+function getBestContrastBlackOrWhite(color: string): "#000000" | "#FFFFFF" {
+  const [r, g, b] = hexToRgb(color);
+
+  const srgbToLinear = (channel: number) => {
+    const normalized = channel / 255;
+    return normalized <= 0.03928
+      ? normalized / 12.92
+      : Math.pow((normalized + 0.055) / 1.055, 2.4);
+  };
+
+  const luminance =
+    0.2126 * srgbToLinear(r) +
+    0.7152 * srgbToLinear(g) +
+    0.0722 * srgbToLinear(b);
+
+  const contrastWithBlack = (luminance + 0.05) / 0.05;
+  const contrastWithWhite = 1.05 / (luminance + 0.05);
+
+  return contrastWithBlack >= contrastWithWhite ? "#000000" : "#FFFFFF";
+}
+
 function interpolateColor(
   color1: string,
   color2: string,
@@ -74,6 +122,22 @@ function parseUtcOffsetHours(timezone: string | null): number {
   if (!match) return 0;
   const offset = Number.parseInt(match[1], 10);
   return Number.isFinite(offset) ? offset : 0;
+}
+
+function formatTimeTo12Hour(time24: string): string {
+  const [hoursPart, minutesPart] = time24.split(":");
+  const hours24 = Number.parseInt(hoursPart ?? "0", 10);
+  const minutes = Number.parseInt(minutesPart ?? "0", 10);
+
+  if (!Number.isFinite(hours24) || !Number.isFinite(minutes)) {
+    return time24;
+  }
+
+  const period = hours24 >= 12 ? "PM" : "AM";
+  const hours12 = hours24 % 12 === 0 ? 12 : hours24 % 12;
+  const formattedMinutes = String(minutes).padStart(2, "0");
+
+  return `${hours12}:${formattedMinutes} ${period}`;
 }
 
 function calculateValues(
@@ -285,6 +349,20 @@ export default function Home() {
     () => calculateValues(flightProgress, currentTimezone),
     [flightProgress, currentTimezone],
   );
+  const currentTimezoneLabel = useMemo(() => {
+    const offset = Number.parseInt(currentTimezone ?? "+0", 10);
+    if (!Number.isFinite(offset)) return "UTC+0";
+    if (offset === 0) return "UTC+0";
+    return offset > 0 ? `UTC+${offset}` : `UTC${offset}`;
+  }, [currentTimezone]);
+  const currentTimezoneIndex = useMemo(() => {
+    const index = timeZones.indexOf(currentTimezoneLabel);
+    return index >= 0 ? index : 0;
+  }, [currentTimezoneLabel]);
+  const localTimeDisplay = useMemo(
+    () => formatTimeTo12Hour(localTime),
+    [localTime],
+  );
   const skyPhaseFraction = 1 - skyPhase / (gradients.length - 1);
 
   useEffect(() => {
@@ -458,14 +536,77 @@ export default function Home() {
     return 1 + c3 * Math.pow(t - 1, 3) + c1 * Math.pow(t - 1, 2);
   };
 
+  const clockTicksRef = useRef<SVGSVGElement>(null);
+  useEffect(() => {
+    if (!clockTicksRef.current || !mainRef.current) return;
+
+    const clockTicks = clockTicksRef.current.querySelectorAll("path");
+    const clockRect = clockTicksRef.current.getBoundingClientRect();
+    const localTimeHours = parseInt(localTime.split(":")[0], 10);
+    const localTimeMinutes = parseInt(localTime.split(":")[1], 10);
+    const localTimeHoursOnDial = localTimeHours % 12;
+    const minutesPercent = localTimeMinutes / 60;
+    const hoursPercent =
+      (localTimeHoursOnDial * 60 + localTimeMinutes) / (12 * 60);
+
+    mainRef.current.style.setProperty(
+      "--minutes-percent",
+      minutesPercent.toString(),
+    );
+    mainRef.current.style.setProperty(
+      "--hours-percent",
+      hoursPercent.toString(),
+    );
+
+    const clockColor = getBestContrastBlackOrWhite(interpolatedColors[14]);
+    mainRef.current.style.setProperty("--clock-color", clockColor);
+    clockTicks.forEach((tick, i) => {
+      // factor clock color into here
+      const top = tick.getBoundingClientRect().top;
+      const parentTop = clockRect.top ?? 0;
+      const topPercent = (top - parentTop) / clockRect.height;
+      const index = 9 - Math.round(topPercent * (9 - 1)) - 1;
+      const backdropRGB = "calc(var(--sky-phase, 0) * 150)";
+      if (tick.dataset.type === "major") {
+        tick.setAttribute(
+          "stroke",
+          `color-mix(in oklab, ${interpolatedColors[index]} calc(45% - var(--sky-phase, 0) * 10%), rgba(${backdropRGB},${backdropRGB},${backdropRGB},1))`,
+        );
+      } else if (tick.dataset.type === "minor") {
+        tick.setAttribute(
+          "stroke",
+          `color-mix(in oklab, ${interpolatedColors[index]} calc(60% - var(--sky-phase, 0) * 10%), rgba(${backdropRGB},${backdropRGB},${backdropRGB},1))`,
+        );
+      }
+
+      if (isDragging) {
+        const tickCount = clockTicks.length;
+        const centerTick = (1 - hoursPercent) * (tickCount - 1);
+        const nearestTickCount = 10;
+        const radiusInTicks = nearestTickCount / 2;
+        const linearDistance = Math.abs(i - centerTick);
+        const wrappedDistance = Math.min(
+          linearDistance,
+          tickCount - linearDistance,
+        );
+        const influence = Math.max(0, 1 - wrappedDistance / radiusInTicks);
+        const easeFactor = easeOut(influence);
+        const strokeWidth = 1 + 5 * easeFactor;
+        tick.setAttribute("stroke-width", strokeWidth.toString());
+      } else {
+        tick.setAttribute("stroke-width", "1");
+      }
+    });
+  }, [interpolatedColors, localTime, isDragging]);
+
   return (
     <main
-      className="w-dvw h-dvh flex flex-col items-center justify-center overflow-hidden"
+      className="w-dvw h-dvh flex flex-col items-center justify-center overflow-hidden select-none"
       ref={mainRef}
     >
       <div className="relative w-[393px] h-[852px] bg-black">
         <Image
-          className="absolute z-100 inset-[0_0_auto_0] pointer-events-none select-none"
+          className="absolute z-100 inset-[0_0_auto_0] pointer-events-none"
           src="/dynamic-island.png"
           alt="Logo"
           width={600}
@@ -507,12 +648,477 @@ export default function Home() {
               </defs>
               <rect width="100%" height="100%" fill="url(#animatedGradient)" />
             </svg>
-            <div className="absolute flex flex-col items-center gap-4">
-              <h1 className="absolute z-1 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white text-4xl font-bold">
-                {localTime}
-                <br />
-                {flightTime}
-              </h1>
+            <div className="absolute flex flex-col items-center gap-4 text-(--clock-color) transition-[color] duration-200">
+              <div className="absolute z-1 inset-0 mask-[linear-gradient(to_bottom,transparent_5%,white_10%,white_90%,transparent_95%)]">
+                <div className="absolute bottom-1/4 left-1/2 -translate-x-1/2 flex items-stretch justify-center gap-4">
+                  <div className="flex items-stretch gap-0.5">
+                    <div className="relative">
+                      <h3 className="relative opacity-15">00:00</h3>
+                      <h3 className="absolute inset-[0_0_0_auto]">
+                        {localTimeDisplay.slice(0, 5)}
+                      </h3>
+                    </div>
+                    <div className="flex flex-col items-center justify-between -translate-y-1">
+                      <p
+                        className="text-[10px]"
+                        style={{
+                          opacity:
+                            localTimeDisplay.slice(-2) === "AM" ? 1 : 0.2,
+                        }}
+                      >
+                        a
+                      </p>
+                      <p
+                        className="text-[10px]"
+                        style={{
+                          opacity:
+                            localTimeDisplay.slice(-2) === "PM" ? 1 : 0.2,
+                        }}
+                      >
+                        p
+                      </p>
+                    </div>
+                  </div>
+                  <div className="relative w-23">
+                    <div
+                      className="absolute left-0 -top-1.5 w-full flex flex-col items-start gap-1 duration-200 ease-in-out"
+                      style={{
+                        transform: `translateY(calc(-${currentTimezoneIndex} * 100% / 24))`,
+                      }}
+                    >
+                      {timeZones.map((label, index) => {
+                        const directDistance = Math.abs(
+                          index - currentTimezoneIndex,
+                        );
+                        const cyclicDistance = Math.min(
+                          directDistance,
+                          timeZones.length - directDistance,
+                        );
+                        const maxDistance =
+                          Math.floor(timeZones.length / 2) - 3;
+                        const delaySteps = isDragging
+                          ? cyclicDistance
+                          : maxDistance - cyclicDistance;
+                        const threshold = isDragging ? 20 : 30;
+
+                        return (
+                          <div
+                            className="w-full transition-opacity duration-200 ease-in-out"
+                            style={{
+                              opacity:
+                                currentTimezoneLabel === label
+                                  ? 1
+                                  : isDragging
+                                    ? 0.5
+                                    : 0,
+                              transitionDelay: `${delaySteps * threshold}ms`,
+                            }}
+                            key={label}
+                          >
+                            <div
+                              className="w-full flex items-center justify-between pl-2 pr-2.5 py-1 rounded-lg transition-[background-color] duration-200 ease-in-out"
+                              style={{
+                                backgroundColor: isDragging
+                                  ? "color-mix(in oklab,var(--clock-color) 5%,transparent)"
+                                  : "transparent",
+                              }}
+                            >
+                              <p className="text-[16px] duration-200">
+                                {label}
+                              </p>
+                              <div
+                                className="w-2 h-2 rounded-full bg-[#0073FF] duration-200"
+                                style={{
+                                  opacity: isDragging ? 1 : 0,
+                                  transitionDelay: `${isDragging ? 0 : maxDistance * threshold}ms`,
+                                }}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="absolute z-1 inset-0">
+                <svg
+                  className="text-[#656D7F]"
+                  id="clockTicks"
+                  ref={clockTicksRef}
+                  width="100%"
+                  viewBox="0 0 360 360"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M171.044 9.05664L171.411 16.0566"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M162.036 9.05664L162.772 16.0566"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M152.923 9.05664L154.032 16.0566"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M143.659 9.05664L145.147 16.0566"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M134.188 9.06445L136.063 16.0616"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M124.456 9.10156L126.724 16.0819"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M114.431 9.21094L117.097 16.1574"
+                    data-type="minor"
+                  />
+                  <path d="M104.054 9.45898L107.12 16.3458" data-type="minor" />
+                  <path
+                    d="M96.8178 16.7766L93.3569 9.98438"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M82.4136 11.0215L89.4136 23.1458"
+                    data-type="major"
+                  />
+                  <path d="M71.48 12.9258L75.6336 19.3218" data-type="minor" />
+                  <path d="M60.939 16.1816L65.3657 22.2745" data-type="minor" />
+                  <path d="M51.2358 21.0293L55.9259 26.821" data-type="minor" />
+                  <path
+                    d="M42.3062 27.1289L47.2559 32.6262"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M34.4839 34.5527L39.4243 39.4932"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M27.0679 42.3574L32.5651 47.3072"
+                    data-type="minor"
+                  />
+                  <path d="M20.9683 51.2891L26.76 55.9791" data-type="minor" />
+                  <path d="M16.1206 60.9902L22.2135 65.417" data-type="minor" />
+                  <path
+                    d="M12.8667 71.5312L19.2627 75.6849"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M10.9624 82.4648L23.0868 89.4648"
+                    data-type="major"
+                  />
+                  <path d="M16.7156 96.869L9.92334 93.4082" data-type="minor" />
+                  <path d="M9.3999 104.105L16.2868 107.172" data-type="minor" />
+                  <path d="M9.1499 114.482L16.0964 117.149" data-type="minor" />
+                  <path
+                    d="M9.04053 124.508L16.0208 126.776"
+                    data-type="minor"
+                  />
+                  <path d="M9.00342 134.24L16.0006 136.115" data-type="minor" />
+                  <path
+                    d="M8.99561 143.711L15.9956 145.199"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M8.99561 152.975L15.9956 154.083"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M8.99561 162.088L15.9956 162.824"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M8.99561 171.098L15.9956 171.465"
+                    data-type="minor"
+                  />
+                  <path d="M9 180L22 180" data-type="major" />
+                  <path d="M8.99561 189.01L15.9956 188.643" data-type="minor" />
+                  <path
+                    d="M8.99561 198.018L15.9956 197.282"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M8.99561 207.131L15.9956 206.022"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M8.99561 216.395L15.9956 214.907"
+                    data-type="minor"
+                  />
+                  <path d="M9.00342 225.865L16.0006 223.99" data-type="minor" />
+                  <path d="M9.04053 235.598L16.0208 233.33" data-type="minor" />
+                  <path d="M9.1499 245.623L16.0964 242.957" data-type="minor" />
+                  <path d="M9.39795 256L16.2848 252.934" data-type="minor" />
+                  <path
+                    d="M16.7156 263.236L9.92334 266.697"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M10.9604 277.641L23.0848 270.641"
+                    data-type="major"
+                  />
+                  <path
+                    d="M12.8647 288.574L19.2608 284.421"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M16.1206 299.115L22.2135 294.689"
+                    data-type="minor"
+                  />
+                  <path d="M20.9683 308.818L26.76 304.128" data-type="minor" />
+                  <path
+                    d="M27.0679 317.748L32.5651 312.798"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M34.4819 325.553L39.4224 320.612"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M42.2964 332.986L47.2461 327.489"
+                    data-type="minor"
+                  />
+                  <path d="M51.228 339.086L55.9181 333.294" data-type="minor" />
+                  <path
+                    d="M60.9312 343.934L65.3579 337.841"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M71.4702 347.188L75.6238 340.791"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M82.4058 349.092L89.4058 336.967"
+                    data-type="major"
+                  />
+                  <path d="M96.808 343.339L93.3472 350.131" data-type="minor" />
+                  <path d="M104.044 350.654L107.11 343.767" data-type="minor" />
+                  <path
+                    d="M114.421 350.904L117.087 343.958"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M124.446 351.014L126.714 344.033"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M134.179 351.051L136.054 344.054"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M143.649 351.059L145.137 344.059"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M152.913 351.059L154.022 344.059"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M162.026 351.059L162.762 344.059"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M171.036 351.059L171.403 344.059"
+                    data-type="minor"
+                  />
+                  <path d="M180 351L180 338" data-type="major" />
+                  <path
+                    d="M188.958 351.061L188.591 344.061"
+                    data-type="minor"
+                  />
+                  <path d="M197.966 351.061L197.23 344.061" data-type="minor" />
+                  <path d="M207.079 351.061L205.97 344.061" data-type="minor" />
+                  <path
+                    d="M216.343 351.061L214.855 344.061"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M225.813 351.053L223.939 344.056"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M235.546 351.016L233.278 344.035"
+                    data-type="minor"
+                  />
+                  <path d="M245.571 350.906L242.905 343.96" data-type="minor" />
+                  <path
+                    d="M255.948 350.658L252.882 343.771"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M263.185 343.341L266.646 350.133"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M277.589 349.096L270.589 336.971"
+                    data-type="major"
+                  />
+                  <path
+                    d="M288.522 347.191L284.369 340.795"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M299.063 343.936L294.637 337.843"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M308.767 339.088L304.077 333.296"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M317.696 332.988L312.747 327.491"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M325.519 325.564L320.578 320.624"
+                    data-type="minor"
+                  />
+                  <path d="M332.935 317.76L327.437 312.81" data-type="minor" />
+                  <path
+                    d="M339.034 308.828L333.242 304.138"
+                    data-type="minor"
+                  />
+                  <path d="M343.882 299.127L337.789 294.7" data-type="minor" />
+                  <path d="M347.136 288.586L340.74 284.432" data-type="minor" />
+                  <path d="M349.04 277.652L336.916 270.652" data-type="major" />
+                  <path
+                    d="M343.287 263.248L350.079 266.709"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M350.603 256.012L343.716 252.945"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M350.853 245.635L343.906 242.968"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M350.962 235.609L343.982 233.341"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M350.999 225.877L344.002 224.002"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M351.007 216.406L344.007 214.918"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M351.007 207.143L344.007 206.034"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M351.007 198.029L344.007 197.294"
+                    data-type="minor"
+                  />
+                  <path d="M351.007 189.02L344.007 188.653" data-type="minor" />
+                  <path d="M351 180L338 180" data-type="major" />
+                  <path
+                    d="M351.007 171.109L344.007 171.476"
+                    data-type="minor"
+                  />
+                  <path d="M351.007 162.1L344.007 162.835" data-type="minor" />
+                  <path
+                    d="M351.007 152.986L344.007 154.095"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M351.007 143.723L344.007 145.211"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M350.999 134.252L344.002 136.127"
+                    data-type="minor"
+                  />
+                  <path d="M350.962 124.52L343.982 126.788" data-type="minor" />
+                  <path
+                    d="M350.853 114.494L343.906 117.161"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M350.604 104.117L343.718 107.183"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M343.287 96.8807L350.079 93.4199"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M349.042 82.4766L336.918 89.4766"
+                    data-type="major"
+                  />
+                  <path d="M347.138 71.543L340.742 75.6966" data-type="minor" />
+                  <path d="M343.882 61.002L337.789 65.4287" data-type="minor" />
+                  <path
+                    d="M339.034 51.3008L333.242 55.9908"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M332.935 42.3691L327.437 47.3189"
+                    data-type="minor"
+                  />
+                  <path d="M325.521 34.5645L320.58 39.5049" data-type="minor" />
+                  <path
+                    d="M317.706 27.1328L312.756 32.6301"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M308.775 21.0332L304.085 26.8249"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M299.073 16.1836L294.647 22.2765"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M288.532 12.9297L284.379 19.3257"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M277.599 11.0254L270.599 23.1497"
+                    data-type="major"
+                  />
+                  <path
+                    d="M263.194 16.7805L266.655 9.98828"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M255.958 9.46289L252.892 16.3497"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M245.581 9.21484L242.915 16.1613"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M235.556 9.10547L233.288 16.0858"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M225.823 9.06641L223.948 16.0636"
+                    data-type="minor"
+                  />
+                  <path
+                    d="M216.353 9.06055L214.865 16.0605"
+                    data-type="minor"
+                  />
+                  <path d="M207.089 9.06055L205.98 16.0605" data-type="minor" />
+                  <path d="M197.976 9.06055L197.24 16.0605" data-type="minor" />
+                  <path
+                    d="M188.966 9.06055L188.599 16.0605"
+                    data-type="minor"
+                  />
+                  <path d="M180 9V22" data-type="major" />
+                </svg>
+              </div>
               <div
                 className="flex items-center justify-center"
                 style={{
@@ -597,8 +1203,8 @@ export default function Home() {
               className="relative w-[calc(100%+64px)] h-[246px] mask-center mask-no-repeat overflow-hidden duration-200 ease-in-out"
               style={{
                 maskImage: isDragging
-                  ? "radial-gradient(ellipse 75% 45% at 50% 50%,white 75%,transparent 125%)"
-                  : "radial-gradient(ellipse 75% 50% at 50% 50%,white 45%,rgba(255,255,255,0.9) 55%,transparent 100%)",
+                  ? "radial-gradient(ellipse 100% 45% at 50% 50%,white 75%,transparent 125%)"
+                  : "radial-gradient(ellipse 150% 50% at 50% 50%,white 45%,rgba(255,255,255,0.9) 55%,transparent 100%)",
               }}
             >
               <div
@@ -663,7 +1269,7 @@ export default function Home() {
                       left: "calc(var(--elapsed-x-norm, 0) * 100%)",
                       top: "calc(var(--elapsed-y-norm, 0) * 100%)",
                       transform: `translate(-50%, -50%) rotate(calc(var(--elapsed-angle-deg, 0) * 1deg))`,
-                      width: isDragging ? 8 : 6,
+                      width: isDragging ? 10 : 6,
                     }}
                   >
                     <svg
@@ -738,42 +1344,34 @@ export default function Home() {
                       backgroundImage: "url('/world.png')",
                     }}
                   />
-                  {(() => {
-                    const numbers = Array.from({ length: 24 }, (_, i) => {
-                      const num = -11 + i;
-                      return new Intl.NumberFormat("en-US", {
-                        signDisplay: "exceptZero",
-                      }).format(num);
-                    });
-                    return numbers.map((timezone) => (
-                      <div
-                        key={timezone}
-                        className="absolute w-full inset-0 bg-[auto_100%] bg-repeat-x duration-200 ease-in-out"
-                        style={{
-                          filter: `hue-rotate(${15 - 20 * skyPhaseFraction}deg) brightness(${2 - skyPhaseFraction})`,
-                          opacity: isDragging
-                            ? currentTimezone == timezone.toString()
-                              ? 0.5
-                              : 0
-                            : 0,
-                          backgroundImage: `url('/timezones/${timezone}.png')`,
-                        }}
-                      />
-                    ));
-                  })()}
+                  {timeZones.map((timezone) => (
+                    <div
+                      key={timezone}
+                      className="absolute w-full inset-0 bg-[auto_100%] bg-repeat-x duration-200 ease-in-out"
+                      style={{
+                        filter: `hue-rotate(${15 - 20 * skyPhaseFraction}deg) brightness(${2 - skyPhaseFraction})`,
+                        opacity: isDragging
+                          ? currentTimezoneLabel === timezone
+                            ? 0.5
+                            : 0
+                          : 0,
+                        backgroundImage: `url('/timezones/${timezone.replace("UTC", "")}.png')`,
+                      }}
+                    />
+                  ))}
                 </div>
               </div>
             </div>
             <div className="w-full flex items-center justify-between text-(--white)/50">
               <h2>ICN</h2>
-              <h2>{`UTC${currentTimezone ?? "--"}`}</h2>
+              <h2>{flightTime}</h2>
               <h2>YYZ</h2>
             </div>
             <div className="w-full relative h-8" ref={timelineRef}>
               <div className="absolute inset-0 bg-(--white)/10 border border-(--white)/20 rounded-xl" />
               <div
                 className="absolute top-0 left-0 h-full aspect-square scale-200 flex items-center justify-center transition-transform duration-200"
-                // style={{ transform: `scale(${isDragging ? 2.5 : 2})` }}
+                style={{ transform: `scale(${isDragging ? 1.25 : 1})` }}
                 ref={timelineDragRef}
               >
                 <div
@@ -801,7 +1399,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none select-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">
           <div
             className="opacity-0 scale-100 duration-300 ease-in-out"
             ref={edgesRef}
